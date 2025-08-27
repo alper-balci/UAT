@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏇 ELAZIĞ HIPODROMU - 20250827 TARİHLİ PUANLAMA ANALİZİ</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 20px; 
+            background-color: #f8f9fa;
+        }
+        .header { 
+            text-align: center; 
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white; 
+            padding: 25px; 
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .race-section { 
+            margin-bottom: 40px; 
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .race-header { 
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white; 
+            padding: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .filter-btn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+        }
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+            background: linear-gradient(135deg, #c0392b, #a93226);
+        }
+        .reset-btn {
+            background: linear-gradient(135deg, #27ae60, #229954);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 12px;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+        .reset-btn:hover {
+            background: linear-gradient(135deg, #229954, #1e8449);
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            font-size: 13px;
+        }
+        th { 
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+            color: white; 
+            padding: 12px 8px; 
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid #2c3e50;
+            font-size: 12px;
+        }
+        td { 
+            padding: 10px 8px; 
+            text-align: center; 
+            border: 1px solid #ddd;
+        }
+        tr:nth-child(even) { background-color: #f8f9fa; }
+        tr:hover { background-color: #e3f2fd; }
+        .rank-1 { background-color: #fff3cd; font-weight: bold; }
+        .rank-2 { background-color: #d1ecf1; }
+        .rank-3 { background-color: #f8d7da; }
+        .lightning { color: #f39c12; font-weight: bold; }
+        .star { color: #e74c3c; }
+        .summary { 
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .no-data { 
+            text-align: center; 
+            color: #6c757d; 
+            font-style: italic; 
+            padding: 30px;
+        }
+        .filtered-row { display: none; }
+        .winner-highlight {
+            background-color: #d4edda !important;
+            border-left: 5px solid #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏇 ELAZIĞ HIPODROMU - 20250827 TARİHLİ PUANLAMA ANALİZİ</h1>
+        <p>🎯 SİSTEM: TOPLAM PUANA GÖRE SIRALAMA (Her Sütun 10-1 Puan)</p>
+        <p>📊 METOD: 8 farklı kritere göre puanlama (⚡ = O sütundaki en yüksek değer)</p>
+        <p>⭐ BONUS: 1200-1500m yarışlarda en hızlı tahmini süreye +15 puan</p>
+        <p>💣 FİLTRE: Kazanacaklar butonu ile pist rating'ine göre en yüksek 5 atı görün</p>
+    </div>
+
+    <div class="race-section">
+        <div class="race-header">
+            <div>
+                📋 1.koşu - 🏁 Kum - 📏 1800m
+                <br><small>📝 ŞARTLI 4/DHÖW , 4 Yaşlı Araplar,  58 kg,                      1800  Kum , E.İ.D. : 2.07.30</small>
+            </div>
+            <div>
+                <button class="filter-btn" onclick="filterWinners(0)">💣 Kazanacaklar</button>
+                <button class="reset-btn" onclick="resetFilter(0)">🔄 Tümü</button>
+            </div>
+        </div>
+
+        <table id="race-table-0">
+            <thead>
+                <tr>
+                    <th>Sıra</th>
+                    <th>Program</th>
+                    <th>At Adı</th><th>Kum Rating</th><th>Mevcut Yetenek</th>
+                    <th>IFHA Rating</th>
+                    <th>Jokey</th><th>J-Kum Rating</th><th>J-Mevcut</th>
+                    <th>J-IFHA</th>
+                    <th>Galop Ort.</th>
+                    <th>Tahmini Süre</th>
+                    <th>TOPLAM PUAN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="rank-1" data-track-rating="138.8">
+                    <td>1</td>
+                    <td>5</td>
+                    <td>NECMİ BABA</td>
+                    <td><span class="lightning">⚡138.8 (10p)</span></td>
+                    <td><span class="lightning">⚡138.7 (10p)</span></td>
+                    <td><span class="lightning">⚡148.0 (10p)</span></td>
+                    <td>İ.KATAR</td>
+                    <td>121.6 (6p)</td>
+                    <td>122.7 (5p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡121.6s (10p)</span></td>
+                    <td><strong>71</strong></td>
+                </tr>
+                <tr class="rank-2" data-track-rating="129.9">
+                    <td>2</td>
+                    <td>1</td>
+                    <td>ABEHEYRAN</td>
+                    <td>129.9 (6p)</td>
+                    <td>128.3 (6p)</td>
+                    <td>146.4 (9p)</td>
+                    <td>İ.AKYAVUZ</td>
+                    <td>127.7 (9p)</td>
+                    <td>127.3 (8p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡121.6s (10p)</span></td>
+                    <td><strong>68</strong></td>
+                </tr>
+                <tr class="rank-3" data-track-rating="132.4">
+                    <td>3</td>
+                    <td>3</td>
+                    <td>PINAR RÜZGARI</td>
+                    <td>132.4 (8p)</td>
+                    <td>132.7 (8p)</td>
+                    <td>140.1 (8p)</td>
+                    <td>F.YARDIMCI</td>
+                    <td>127.6 (8p)</td>
+                    <td>130.0 (9p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>135.0 (8p)</td>
+                    <td>125.8s (7p)</td>
+                    <td><strong>66</strong></td>
+                </tr>
+                <tr class="" data-track-rating="130.5">
+                    <td>4</td>
+                    <td>2</td>
+                    <td>ESYAŞAR</td>
+                    <td>130.5 (7p)</td>
+                    <td>129.0 (7p)</td>
+                    <td>140.0 (7p)</td>
+                    <td>N.ALTIN</td>
+                    <td><span class="lightning">⚡128.6 (10p)</span></td>
+                    <td><span class="lightning">⚡133.3 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>130.0 (7p)</td>
+                    <td>127.1s (6p)</td>
+                    <td><strong>64</strong></td>
+                </tr>
+                <tr class="" data-track-rating="135.5">
+                    <td>5</td>
+                    <td>4</td>
+                    <td>BIÇKIN KRAL</td>
+                    <td>135.5 (9p)</td>
+                    <td>136.3 (9p)</td>
+                    <td><span class="lightning">⚡148.0 (10p)</span></td>
+                    <td>M.A.AKTÜRK</td>
+                    <td>123.5 (7p)</td>
+                    <td>125.3 (6p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>115.0 (4p)</td>
+                    <td>133.1s (3p)</td>
+                    <td><strong>58</strong></td>
+                </tr>
+                <tr class="" data-track-rating="125.0">
+                    <td>6</td>
+                    <td>7</td>
+                    <td>TÜKENMEZ TAY</td>
+                    <td>125.0 (4p)</td>
+                    <td>125.8 (4p)</td>
+                    <td><span class="lightning">⚡148.0 (10p)</span></td>
+                    <td>Y.CENGİZ</td>
+                    <td>117.8 (3p)</td>
+                    <td>126.7 (7p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>123.5s (9p)</td>
+                    <td><strong>57</strong></td>
+                </tr>
+                <tr class="" data-track-rating="126.0">
+                    <td>7</td>
+                    <td>6</td>
+                    <td>NARLIK GÜZELİ</td>
+                    <td>126.0 (5p)</td>
+                    <td>122.0 (3p)</td>
+                    <td>140.0 (7p)</td>
+                    <td>M.IŞIK</td>
+                    <td>119.5 (4p)</td>
+                    <td>114.7 (2p)</td>
+                    <td>136.7 (9p)</td>
+                    <td>137.5 (9p)</td>
+                    <td>124.8s (8p)</td>
+                    <td><strong>47</strong></td>
+                </tr>
+                <tr class="" data-track-rating="123.6">
+                    <td>8</td>
+                    <td>9</td>
+                    <td>BADEGÜLÜM</td>
+                    <td>123.6 (3p)</td>
+                    <td>127.3 (5p)</td>
+                    <td><span class="lightning">⚡148.0 (10p)</span></td>
+                    <td>B.SARIDAL</td>
+                    <td>116.1 (2p)</td>
+                    <td>118.0 (3p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>125.0 (5p)</td>
+                    <td>129.4s (4p)</td>
+                    <td><strong>42</strong></td>
+                </tr>
+                <tr class="" data-track-rating="123.1">
+                    <td>9</td>
+                    <td>8</td>
+                    <td>YEŞİL ASMA</td>
+                    <td>123.1 (2p)</td>
+                    <td>114.0 (2p)</td>
+                    <td>138.3 (6p)</td>
+                    <td>S.KLAN</td>
+                    <td>120.5 (5p)</td>
+                    <td>119.3 (4p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>127.5 (6p)</td>
+                    <td>128.5s (5p)</td>
+                    <td><strong>40</strong></td>
+                </tr>
+            </tbody>
+        </table></div>
+    <div class="race-section">
+        <div class="race-header">
+            <div>
+                📋 2.koşu - 🏁 Kum - 📏 1200m
+                <br><small>📝 ŞARTLI 4/DHÖW , 3 Yaşlı Araplar,  57 kg,                      1200  Kum , E.İ.D. : 1.21.14</small>
+            </div>
+            <div>
+                <button class="filter-btn" onclick="filterWinners(1)">💣 Kazanacaklar</button>
+                <button class="reset-btn" onclick="resetFilter(1)">🔄 Tümü</button>
+            </div>
+        </div>
+
+        <table id="race-table-1">
+            <thead>
+                <tr>
+                    <th>Sıra</th>
+                    <th>Program</th>
+                    <th>At Adı</th><th>Kum Rating</th><th>Mevcut Yetenek</th>
+                    <th>IFHA Rating</th>
+                    <th>Jokey</th><th>J-Kum Rating</th><th>J-Mevcut</th>
+                    <th>J-IFHA</th>
+                    <th>Galop Ort.</th>
+                    <th>Tahmini Süre</th>
+                    <th>TOPLAM PUAN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="rank-1" data-track-rating="133.9">
+                    <td>1</td>
+                    <td>6</td>
+                    <td>MUHLİF BABA</td>
+                    <td>133.9 (7p)</td>
+                    <td>134.3 (9p)</td>
+                    <td>141.7 (8p)</td>
+                    <td>F.YARDIMCI</td>
+                    <td>127.6 (8p)</td>
+                    <td>130.0 (9p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>78.9s (9p)</td>
+                    <td><strong>70</strong></td>
+                </tr>
+                <tr class="rank-2" data-track-rating="126.9">
+                    <td>2</td>
+                    <td>2</td>
+                    <td>ÇILGIN HEME</td>
+                    <td>126.9 (4p)</td>
+                    <td>114.3 (4p)</td>
+                    <td>140.0 (6p)</td>
+                    <td>H.KATI</td>
+                    <td>118.7 (5p)</td>
+                    <td>123.3 (6p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡78.0s (10p)</span> <span class="star">⭐</span></td>
+                    <td><strong>70 <span class="star">⭐</span></strong></td>
+                </tr>
+                <tr class="rank-3" data-track-rating="138.7">
+                    <td>3</td>
+                    <td>4</td>
+                    <td>HIZLI İBRAHİM</td>
+                    <td><span class="lightning">⚡138.7 (10p)</span></td>
+                    <td><span class="lightning">⚡138.7 (10p)</span></td>
+                    <td><span class="lightning">⚡148.0 (10p)</span></td>
+                    <td>İ.KATAR</td>
+                    <td>121.6 (6p)</td>
+                    <td>122.7 (5p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>127.5 (8p)</td>
+                    <td>84.0s (6p)</td>
+                    <td><strong>65</strong></td>
+                </tr>
+                <tr class="" data-track-rating="134.0">
+                    <td>4</td>
+                    <td>3</td>
+                    <td>KÜÇÜKCEVER</td>
+                    <td>134.0 (8p)</td>
+                    <td>134.0 (8p)</td>
+                    <td>146.4 (9p)</td>
+                    <td>İ.AKYAVUZ</td>
+                    <td>127.7 (9p)</td>
+                    <td>127.3 (8p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>125.0 (7p)</td>
+                    <td>84.6s (5p)</td>
+                    <td><strong>64</strong></td>
+                </tr>
+                <tr class="" data-track-rating="132.9">
+                    <td>5</td>
+                    <td>1</td>
+                    <td>ASTEKPORT</td>
+                    <td>132.9 (5p)</td>
+                    <td>123.7 (5p)</td>
+                    <td>140.0 (6p)</td>
+                    <td>N.ALTIN</td>
+                    <td><span class="lightning">⚡128.6 (10p)</span></td>
+                    <td><span class="lightning">⚡133.3 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>130.0 (9p)</td>
+                    <td>83.4s (7p)</td>
+                    <td><strong>62</strong></td>
+                </tr>
+                <tr class="" data-track-rating="134.4">
+                    <td>6</td>
+                    <td>5</td>
+                    <td>KÜÇÜK MÜSLÜM</td>
+                    <td>134.4 (9p)</td>
+                    <td>133.3 (7p)</td>
+                    <td>140.1 (7p)</td>
+                    <td>Y.CENGİZ</td>
+                    <td>117.8 (4p)</td>
+                    <td>126.7 (7p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>130.0 (9p)</td>
+                    <td>83.4s (7p)</td>
+                    <td><strong>60</strong></td>
+                </tr>
+                <tr class="" data-track-rating="133.1">
+                    <td>7</td>
+                    <td>7</td>
+                    <td>RECOHAT</td>
+                    <td>133.1 (6p)</td>
+                    <td>131.7 (6p)</td>
+                    <td>140.0 (6p)</td>
+                    <td>H.ALTUNKILIÇ</td>
+                    <td>121.8 (7p)</td>
+                    <td>121.3 (4p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>81.0s (8p)</td>
+                    <td><strong>57</strong></td>
+                </tr>
+            </tbody>
+        </table></div>
+    <div class="race-section">
+        <div class="race-header">
+            <div>
+                📋 3.koşu - 🏁 Kum - 📏 1200m
+                <br><small>📝 Handikap 15/DHÖ /H3 , 4 ve Yukarı Araplar,                       1200  Kum , E.İ.D. : 1.21.14</small>
+            </div>
+            <div>
+                <button class="filter-btn" onclick="filterWinners(2)">💣 Kazanacaklar</button>
+                <button class="reset-btn" onclick="resetFilter(2)">🔄 Tümü</button>
+            </div>
+        </div>
+
+        <table id="race-table-2">
+            <thead>
+                <tr>
+                    <th>Sıra</th>
+                    <th>Program</th>
+                    <th>At Adı</th><th>Kum Rating</th><th>Mevcut Yetenek</th>
+                    <th>IFHA Rating</th>
+                    <th>Jokey</th><th>J-Kum Rating</th><th>J-Mevcut</th>
+                    <th>J-IFHA</th>
+                    <th>Galop Ort.</th>
+                    <th>Tahmini Süre</th>
+                    <th>TOPLAM PUAN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="rank-1" data-track-rating="129.1">
+                    <td>1</td>
+                    <td>5</td>
+                    <td>NEDİMİNOĞLU</td>
+                    <td>129.1 (5p)</td>
+                    <td>126.7 (2p)</td>
+                    <td>141.7 (8p)</td>
+                    <td>M.A.AKTÜRK</td>
+                    <td>123.5 (6p)</td>
+                    <td>125.3 (4p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡79.2s (10p)</span> <span class="star">⭐</span></td>
+                    <td><strong>70 <span class="star">⭐</span></strong></td>
+                </tr>
+                <tr class="rank-2" data-track-rating="134.2">
+                    <td>2</td>
+                    <td>2</td>
+                    <td>MALKA MOMA</td>
+                    <td>134.2 (8p)</td>
+                    <td>134.3 (8p)</td>
+                    <td><span class="lightning">⚡148.0 (10p)</span></td>
+                    <td>İ.AKYAVUZ</td>
+                    <td>127.7 (9p)</td>
+                    <td>127.3 (7p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>133.8 (9p)</td>
+                    <td>80.4s (8p)</td>
+                    <td><strong>69</strong></td>
+                </tr>
+                <tr class="rank-3" data-track-rating="132.8">
+                    <td>3</td>
+                    <td>7</td>
+                    <td>KOŞAR ZEYNEL</td>
+                    <td>132.8 (7p)</td>
+                    <td>137.3 (9p)</td>
+                    <td><span class="lightning">⚡148.0 (10p)</span></td>
+                    <td>F.YARDIMCI</td>
+                    <td>127.6 (8p)</td>
+                    <td>130.0 (8p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>127.5 (6p)</td>
+                    <td>84.0s (3p)</td>
+                    <td><strong>61</strong></td>
+                </tr>
+                <tr class="" data-track-rating="136.4">
+                    <td>4</td>
+                    <td>1</td>
+                    <td>DİKME AĞASI</td>
+                    <td><span class="lightning">⚡136.4 (10p)</span></td>
+                    <td><span class="lightning">⚡139.0 (10p)</span></td>
+                    <td><span class="lightning">⚡148.0 (10p)</span></td>
+                    <td>Y.ÇELİKBAŞ</td>
+                    <td>120.9 (2p)</td>
+                    <td><span class="lightning">⚡134.7 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>117.5 (5p)</td>
+                    <td>86.4s (2p)</td>
+                    <td><strong>59</strong></td>
+                </tr>
+                <tr class="" data-track-rating="126.9">
+                    <td>5</td>
+                    <td>9</td>
+                    <td>KÜÇÜK BOZTEPE</td>
+                    <td>126.9 (3p)</td>
+                    <td>133.7 (7p)</td>
+                    <td>140.0 (6p)</td>
+                    <td>A.H.BAYAR</td>
+                    <td>125.5 (7p)</td>
+                    <td>126.0 (5p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>81.0s (7p)</td>
+                    <td><strong>55</strong></td>
+                </tr>
+                <tr class="" data-track-rating="128.7">
+                    <td>6</td>
+                    <td>3</td>
+                    <td>BENZEMA</td>
+                    <td>128.7 (4p)</td>
+                    <td>120.3</td>
+                    <td>140.0 (6p)</td>
+                    <td>N.ALTIN</td>
+                    <td><span class="lightning">⚡128.6 (10p)</span></td>
+                    <td>133.3 (9p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>132.5 (8p)</td>
+                    <td>82.8s (5p)</td>
+                    <td><strong>52</strong></td>
+                </tr>
+                <tr class="" data-track-rating="128.7">
+                    <td>7</td>
+                    <td>8</td>
+                    <td>GÜVENKIZ</td>
+                    <td>128.7 (4p)</td>
+                    <td>128.7 (4p)</td>
+                    <td><span class="lightning">⚡148.0 (10p)</span></td>
+                    <td>M.ŞAKİR</td>
+                    <td>119.9 (1p)</td>
+                    <td>122.0 (2p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>79.5s (9p)</td>
+                    <td><strong>50</strong></td>
+                </tr>
+                <tr class="" data-track-rating="134.8">
+                    <td>8</td>
+                    <td>6</td>
+                    <td>CEYDACANIM</td>
+                    <td>134.8 (9p)</td>
+                    <td>128.0 (3p)</td>
+                    <td>140.1 (7p)</td>
+                    <td>H.ALTUNDAĞ</td>
+                    <td>122.8 (5p)</td>
+                    <td>120.0</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>133.8 (9p)</td>
+                    <td>82.5s (6p)</td>
+                    <td><strong>49</strong></td>
+                </tr>
+                <tr class="" data-track-rating="130.1">
+                    <td>9</td>
+                    <td>4</td>
+                    <td>HARPUTGÜZELİ</td>
+                    <td>130.1 (6p)</td>
+                    <td>130.7 (5p)</td>
+                    <td>144.8 (9p)</td>
+                    <td>Y.CENGİZ</td>
+                    <td>117.8</td>
+                    <td>126.7 (6p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>130.0 (7p)</td>
+                    <td>83.4s (4p)</td>
+                    <td><strong>47</strong></td>
+                </tr>
+                <tr class="" data-track-rating="126.1">
+                    <td>10</td>
+                    <td>11</td>
+                    <td>HEYFA</td>
+                    <td>126.1 (2p)</td>
+                    <td>133.3 (6p)</td>
+                    <td>140.0 (6p)</td>
+                    <td>M.B.ÇAKMAK</td>
+                    <td>121.7 (3p)</td>
+                    <td>123.3 (3p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>81.0s (7p)</td>
+                    <td><strong>47</strong></td>
+                </tr>
+            </tbody>
+        </table></div>
+    <div class="race-section">
+        <div class="race-header">
+            <div>
+                📋 4.koşu - 🏁 Kum - 📏 1200m
+                <br><small>📝 Maiden , 2 Yaşlı İngilizler,  57 kg,                      1200  Kum , E.İ.D. : 1.12.50</small>
+            </div>
+            <div>
+                <button class="filter-btn" onclick="filterWinners(3)">💣 Kazanacaklar</button>
+                <button class="reset-btn" onclick="resetFilter(3)">🔄 Tümü</button>
+            </div>
+        </div>
+
+        <table id="race-table-3">
+            <thead>
+                <tr>
+                    <th>Sıra</th>
+                    <th>Program</th>
+                    <th>At Adı</th><th>Kum Rating</th><th>Mevcut Yetenek</th>
+                    <th>IFHA Rating</th>
+                    <th>Jokey</th><th>J-Kum Rating</th><th>J-Mevcut</th>
+                    <th>J-IFHA</th>
+                    <th>Galop Ort.</th>
+                    <th>Tahmini Süre</th>
+                    <th>TOPLAM PUAN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="rank-1" data-track-rating="135.0">
+                    <td>1</td>
+                    <td>10</td>
+                    <td>KADIKÖY GÜZELİ</td>
+                    <td><span class="lightning">⚡135.0 (10p)</span></td>
+                    <td><span class="lightning">⚡135.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.1 (10p)</span></td>
+                    <td>M.A.AKTÜRK</td>
+                    <td>123.5 (7p)</td>
+                    <td>125.3 (6p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>77.4s (8p)</td>
+                    <td><strong>71</strong></td>
+                </tr>
+                <tr class="rank-2" data-track-rating="129.4">
+                    <td>2</td>
+                    <td>8</td>
+                    <td>SON OFF OZAN</td>
+                    <td>129.4 (9p)</td>
+                    <td>129.4 (8p)</td>
+                    <td>138.3 (9p)</td>
+                    <td>H.ALTUNDAĞ</td>
+                    <td>122.8 (6p)</td>
+                    <td>120.0 (1p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>79.8s (5p)</td>
+                    <td><strong>58</strong></td>
+                </tr>
+                <tr class="rank-3" data-track-rating="111.7">
+                    <td>3</td>
+                    <td>7</td>
+                    <td>SIWARO</td>
+                    <td>111.7 (2p)</td>
+                    <td>111.7 (2p)</td>
+                    <td>121.1 (2p)</td>
+                    <td>H.ALTUNKILIÇ</td>
+                    <td>121.8 (5p)</td>
+                    <td>121.3 (2p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡76.2s (10p)</span> <span class="star">⭐</span></td>
+                    <td><strong>58 <span class="star">⭐</span></strong></td>
+                </tr>
+                <tr class="" data-track-rating="123.3">
+                    <td>4</td>
+                    <td>11</td>
+                    <td>TELGRAF</td>
+                    <td>123.3 (5p)</td>
+                    <td>123.3 (5p)</td>
+                    <td>132.2 (6p)</td>
+                    <td>F.YARDIMCI</td>
+                    <td>127.6 (8p)</td>
+                    <td>130.0 (9p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>80.4s (4p)</td>
+                    <td><strong>57</strong></td>
+                </tr>
+                <tr class="" data-track-rating="125.8">
+                    <td>5</td>
+                    <td>6</td>
+                    <td>ORAK REİS</td>
+                    <td>125.8 (7p)</td>
+                    <td>125.8 (7p)</td>
+                    <td>133.8 (7p)</td>
+                    <td>M.DOĞAN</td>
+                    <td>120.7 (2p)</td>
+                    <td>125.3 (6p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>79.5s (6p)</td>
+                    <td><strong>55</strong></td>
+                </tr>
+                <tr class="" data-track-rating="124.2">
+                    <td>6</td>
+                    <td>12</td>
+                    <td>YEMENİ</td>
+                    <td>124.2 (6p)</td>
+                    <td>124.2 (6p)</td>
+                    <td>130.0 (5p)</td>
+                    <td>İ.KATAR</td>
+                    <td>121.6 (3p)</td>
+                    <td>122.7 (4p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>78.0s (7p)</td>
+                    <td><strong>51</strong></td>
+                </tr>
+                <tr class="" data-track-rating="128.3">
+                    <td>7</td>
+                    <td>9</td>
+                    <td>EHLİCAN</td>
+                    <td>128.3 (8p)</td>
+                    <td>130.7 (9p)</td>
+                    <td>135.0 (8p)</td>
+                    <td>S.KLAN</td>
+                    <td>120.5 (1p)</td>
+                    <td>119.3</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>80.4s (4p)</td>
+                    <td><strong>50</strong></td>
+                </tr>
+                <tr class="" data-track-rating="118.3">
+                    <td>8</td>
+                    <td>5</td>
+                    <td>LIVE KA</td>
+                    <td>118.3 (3p)</td>
+                    <td>118.3 (3p)</td>
+                    <td>127.4 (3p)</td>
+                    <td>M.B.ÇAKMAK</td>
+                    <td>121.7 (4p)</td>
+                    <td>123.3 (5p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>78.0s (7p)</td>
+                    <td><strong>45</strong></td>
+                </tr>
+                <tr class="" data-track-rating="0.0">
+                    <td>9</td>
+                    <td>1</td>
+                    <td>BERMEDEE</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>İ.AKYAVUZ</td>
+                    <td>127.7 (9p)</td>
+                    <td>127.3 (8p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>78.0s (7p)</td>
+                    <td><strong>44</strong></td>
+                </tr>
+                <tr class="" data-track-rating="120.0">
+                    <td>10</td>
+                    <td>2</td>
+                    <td>FEARLESS WOLF</td>
+                    <td>120.0 (4p)</td>
+                    <td>120.0 (4p)</td>
+                    <td>129.0 (4p)</td>
+                    <td>M.ŞAKİR</td>
+                    <td>119.9</td>
+                    <td>122.0 (3p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>76.5s (9p)</td>
+                    <td><strong>44</strong></td>
+                </tr>
+            </tbody>
+        </table></div>
+    <div class="race-section">
+        <div class="race-header">
+            <div>
+                📋 5.koşu - 🏁 Kum - 📏 1200m
+                <br><small>📝 ŞARTLI 3/Dişi , 3 ve Yukarı İngilizler,  55.50 kg, 60 kg, 60 kg,                     1200  Kum , E.İ.D. : 1.12.50</small>
+            </div>
+            <div>
+                <button class="filter-btn" onclick="filterWinners(4)">💣 Kazanacaklar</button>
+                <button class="reset-btn" onclick="resetFilter(4)">🔄 Tümü</button>
+            </div>
+        </div>
+
+        <table id="race-table-4">
+            <thead>
+                <tr>
+                    <th>Sıra</th>
+                    <th>Program</th>
+                    <th>At Adı</th><th>Kum Rating</th><th>Mevcut Yetenek</th>
+                    <th>IFHA Rating</th>
+                    <th>Jokey</th><th>J-Kum Rating</th><th>J-Mevcut</th>
+                    <th>J-IFHA</th>
+                    <th>Galop Ort.</th>
+                    <th>Tahmini Süre</th>
+                    <th>TOPLAM PUAN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="rank-1" data-track-rating="132.5">
+                    <td>1</td>
+                    <td>2</td>
+                    <td>HENAIRE</td>
+                    <td>132.5 (6p)</td>
+                    <td>135.7 (8p)</td>
+                    <td>140.0 (7p)</td>
+                    <td>F.YARDIMCI</td>
+                    <td>127.6 (8p)</td>
+                    <td>130.0 (8p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡75.9s (10p)</span> <span class="star">⭐</span></td>
+                    <td><strong>82 <span class="star">⭐</span></strong></td>
+                </tr>
+                <tr class="rank-2" data-track-rating="133.1">
+                    <td>2</td>
+                    <td>6</td>
+                    <td>PRINCESS ALLIANOI</td>
+                    <td>133.1 (7p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡148.0 (10p)</span></td>
+                    <td>Y.CENGİZ</td>
+                    <td>117.8 (2p)</td>
+                    <td>126.7 (6p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>79.5s (8p)</td>
+                    <td><strong>63</strong></td>
+                </tr>
+                <tr class="rank-3" data-track-rating="131.5">
+                    <td>3</td>
+                    <td>4</td>
+                    <td>LADY PEREGRINE</td>
+                    <td>131.5 (5p)</td>
+                    <td>128.0 (3p)</td>
+                    <td>141.7 (8p)</td>
+                    <td>N.ALTIN</td>
+                    <td><span class="lightning">⚡128.6 (10p)</span></td>
+                    <td>133.3 (9p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>79.8s (7p)</td>
+                    <td><strong>62</strong></td>
+                </tr>
+                <tr class="" data-track-rating="134.3">
+                    <td>4</td>
+                    <td>1</td>
+                    <td>TOWSON</td>
+                    <td>134.3 (9p)</td>
+                    <td>129.3 (5p)</td>
+                    <td>140.0 (7p)</td>
+                    <td>A.H.BAYAR</td>
+                    <td>125.5 (7p)</td>
+                    <td>126.0 (5p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>79.5s (8p)</td>
+                    <td><strong>61</strong></td>
+                </tr>
+                <tr class="" data-track-rating="134.6">
+                    <td>5</td>
+                    <td>3</td>
+                    <td>DUMANLI PARS</td>
+                    <td><span class="lightning">⚡134.6 (10p)</span></td>
+                    <td>134.7 (7p)</td>
+                    <td>141.7 (8p)</td>
+                    <td>M.B.ÇAKMAK</td>
+                    <td>121.7 (5p)</td>
+                    <td>123.3 (4p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>80.4s (5p)</td>
+                    <td><strong>59</strong></td>
+                </tr>
+                <tr class="" data-track-rating="110.0">
+                    <td>6</td>
+                    <td>7</td>
+                    <td>RIBBON AND RAINBOW</td>
+                    <td>110.0 (2p)</td>
+                    <td>133.7 (6p)</td>
+                    <td>130.6 (5p)</td>
+                    <td>İ.AKYAVUZ</td>
+                    <td>127.7 (9p)</td>
+                    <td>127.3 (7p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>79.2s (9p)</td>
+                    <td><strong>58</strong></td>
+                </tr>
+                <tr class="" data-track-rating="123.8">
+                    <td>7</td>
+                    <td>9</td>
+                    <td>LADY ARZUM</td>
+                    <td>123.8 (3p)</td>
+                    <td>112.7 (2p)</td>
+                    <td>138.3 (6p)</td>
+                    <td>Y.ÇELİKBAŞ</td>
+                    <td>120.9 (3p)</td>
+                    <td><span class="lightning">⚡134.7 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>79.2s (9p)</td>
+                    <td><strong>53</strong></td>
+                </tr>
+                <tr class="" data-track-rating="133.5">
+                    <td>8</td>
+                    <td>5</td>
+                    <td>THE PUISSANT</td>
+                    <td>133.5 (8p)</td>
+                    <td>136.0 (9p)</td>
+                    <td>144.8 (9p)</td>
+                    <td>B.SARIDAL</td>
+                    <td>116.1 (1p)</td>
+                    <td>118.0 (1p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>81.0s (4p)</td>
+                    <td><strong>52</strong></td>
+                </tr>
+                <tr class="" data-track-rating="129.3">
+                    <td>9</td>
+                    <td>8</td>
+                    <td>ÜÇ MATRA</td>
+                    <td>129.3 (4p)</td>
+                    <td>128.7 (4p)</td>
+                    <td>140.0 (7p)</td>
+                    <td>İ.KATAR</td>
+                    <td>121.6 (4p)</td>
+                    <td>122.7 (3p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>80.1s (6p)</td>
+                    <td><strong>48</strong></td>
+                </tr>
+                <tr class="" data-track-rating="108.3">
+                    <td>10</td>
+                    <td>10</td>
+                    <td>SMART SPIRIT</td>
+                    <td>108.3 (1p)</td>
+                    <td>108.3 (1p)</td>
+                    <td>117.9 (4p)</td>
+                    <td>H.ALTUNDAĞ</td>
+                    <td>122.8 (6p)</td>
+                    <td>120.0 (2p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>79.5s (8p)</td>
+                    <td><strong>42</strong></td>
+                </tr>
+            </tbody>
+        </table></div>
+    <div class="race-section">
+        <div class="race-header">
+            <div>
+                📋 6.koşu - 🏁 Kum - 📏 1700m
+                <br><small>📝 Handikap 15 /H3 , 3 Yaşlı İngilizler,                       1700  Kum , E.İ.D. : 1.47.45</small>
+            </div>
+            <div>
+                <button class="filter-btn" onclick="filterWinners(5)">💣 Kazanacaklar</button>
+                <button class="reset-btn" onclick="resetFilter(5)">🔄 Tümü</button>
+            </div>
+        </div>
+
+        <table id="race-table-5">
+            <thead>
+                <tr>
+                    <th>Sıra</th>
+                    <th>Program</th>
+                    <th>At Adı</th><th>Kum Rating</th><th>Mevcut Yetenek</th>
+                    <th>IFHA Rating</th>
+                    <th>Jokey</th><th>J-Kum Rating</th><th>J-Mevcut</th>
+                    <th>J-IFHA</th>
+                    <th>Galop Ort.</th>
+                    <th>Tahmini Süre</th>
+                    <th>TOPLAM PUAN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="rank-1" data-track-rating="137.2">
+                    <td>1</td>
+                    <td>1</td>
+                    <td>ROTA SHOW</td>
+                    <td><span class="lightning">⚡137.2 (10p)</span></td>
+                    <td><span class="lightning">⚡138.7 (10p)</span></td>
+                    <td><span class="lightning">⚡148.0 (10p)</span></td>
+                    <td>İ.AKYAVUZ</td>
+                    <td>127.7 (9p)</td>
+                    <td>127.3 (9p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>116.2s (5p)</td>
+                    <td><strong>73</strong></td>
+                </tr>
+                <tr class="rank-2" data-track-rating="133.6">
+                    <td>2</td>
+                    <td>6</td>
+                    <td>LUKE SKYWALKER</td>
+                    <td>133.6 (6p)</td>
+                    <td>129.3 (5p)</td>
+                    <td><span class="lightning">⚡148.0 (10p)</span></td>
+                    <td>N.ALTIN</td>
+                    <td><span class="lightning">⚡128.6 (10p)</span></td>
+                    <td><span class="lightning">⚡133.3 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>116.2s (5p)</td>
+                    <td><strong>66</strong></td>
+                </tr>
+                <tr class="rank-3" data-track-rating="135.3">
+                    <td>3</td>
+                    <td>5</td>
+                    <td>ONE PAGE</td>
+                    <td>135.3 (7p)</td>
+                    <td>138.3 (9p)</td>
+                    <td>143.2 (9p)</td>
+                    <td>B.BEKTAŞ</td>
+                    <td>122.1 (6p)</td>
+                    <td>118.7 (4p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡109.2s (10p)</span></td>
+                    <td><strong>65</strong></td>
+                </tr>
+                <tr class="" data-track-rating="137.2">
+                    <td>4</td>
+                    <td>4</td>
+                    <td>HAWORTH</td>
+                    <td><span class="lightning">⚡137.2 (10p)</span></td>
+                    <td>136.7 (8p)</td>
+                    <td>140.0 (8p)</td>
+                    <td>H.ALTUNKILIÇ</td>
+                    <td>121.8 (5p)</td>
+                    <td>121.3 (6p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>115.7s (6p)</td>
+                    <td><strong>63</strong></td>
+                </tr>
+                <tr class="" data-track-rating="136.7">
+                    <td>5</td>
+                    <td>7</td>
+                    <td>SUPER HAPPY</td>
+                    <td>136.7 (9p)</td>
+                    <td>133.8 (6p)</td>
+                    <td>140.0 (8p)</td>
+                    <td>M.B.ÇAKMAK</td>
+                    <td>121.7 (4p)</td>
+                    <td>123.3 (7p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>111.8s (9p)</td>
+                    <td><strong>63</strong></td>
+                </tr>
+                <tr class="" data-track-rating="135.4">
+                    <td>6</td>
+                    <td>3</td>
+                    <td>BRUCE BANNER</td>
+                    <td>135.4 (8p)</td>
+                    <td>135.4 (7p)</td>
+                    <td>140.0 (8p)</td>
+                    <td>H.ALTUNDAĞ</td>
+                    <td>122.8 (7p)</td>
+                    <td>120.0 (5p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>114.0s (7p)</td>
+                    <td><strong>62</strong></td>
+                </tr>
+                <tr class="" data-track-rating="131.8">
+                    <td>7</td>
+                    <td>2</td>
+                    <td>KING DALAZ</td>
+                    <td>131.8 (5p)</td>
+                    <td>125.3 (4p)</td>
+                    <td>140.0 (8p)</td>
+                    <td>A.H.BAYAR</td>
+                    <td>125.5 (8p)</td>
+                    <td>126.0 (8p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>112.7s (8p)</td>
+                    <td><strong>61</strong></td>
+                </tr>
+            </tbody>
+        </table></div>
+    <div class="race-section">
+        <div class="race-header">
+            <div>
+                📋 7.koşu - 🏁 Kum - 📏 1700m
+                <br><small>📝 ŞARTLI 5/DHÖW , 4 ve Yukarı Araplar,  58 kg, 60 kg,                      1700  Kum , E.İ.D. : 1.59.47</small>
+            </div>
+            <div>
+                <button class="filter-btn" onclick="filterWinners(6)">💣 Kazanacaklar</button>
+                <button class="reset-btn" onclick="resetFilter(6)">🔄 Tümü</button>
+            </div>
+        </div>
+
+        <table id="race-table-6">
+            <thead>
+                <tr>
+                    <th>Sıra</th>
+                    <th>Program</th>
+                    <th>At Adı</th><th>Kum Rating</th><th>Mevcut Yetenek</th>
+                    <th>IFHA Rating</th>
+                    <th>Jokey</th><th>J-Kum Rating</th><th>J-Mevcut</th>
+                    <th>J-IFHA</th>
+                    <th>Galop Ort.</th>
+                    <th>Tahmini Süre</th>
+                    <th>TOPLAM PUAN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="rank-1" data-track-rating="136.5">
+                    <td>1</td>
+                    <td>8</td>
+                    <td>SEHHAR</td>
+                    <td>136.5 (9p)</td>
+                    <td>133.3 (6p)</td>
+                    <td>140.0 (6p)</td>
+                    <td>N.ALTIN</td>
+                    <td><span class="lightning">⚡128.6 (10p)</span></td>
+                    <td><span class="lightning">⚡133.3 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>115.3s (9p)</td>
+                    <td><strong>70</strong></td>
+                </tr>
+                <tr class="rank-2" data-track-rating="133.0">
+                    <td>2</td>
+                    <td>1</td>
+                    <td>DOĞAN KHAN</td>
+                    <td>133.0 (5p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡148.0 (10p)</span></td>
+                    <td>A.H.BAYAR</td>
+                    <td>125.5 (7p)</td>
+                    <td>126.0 (7p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡110.5s (10p)</span></td>
+                    <td><strong>69</strong></td>
+                </tr>
+                <tr class="rank-3" data-track-rating="137.0">
+                    <td>3</td>
+                    <td>3</td>
+                    <td>RENKKAT</td>
+                    <td><span class="lightning">⚡137.0 (10p)</span></td>
+                    <td>137.0 (8p)</td>
+                    <td><span class="lightning">⚡148.0 (10p)</span></td>
+                    <td>M.ŞAKİR</td>
+                    <td>119.9 (1p)</td>
+                    <td>122.0 (3p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>117.0s (8p)</td>
+                    <td><strong>60</strong></td>
+                </tr>
+                <tr class="" data-track-rating="136.1">
+                    <td>4</td>
+                    <td>11</td>
+                    <td>ÖZAKIN</td>
+                    <td>136.1 (8p)</td>
+                    <td>136.3 (7p)</td>
+                    <td>140.0 (6p)</td>
+                    <td>M.DOĞAN</td>
+                    <td>120.7 (2p)</td>
+                    <td>125.3 (6p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>117.0s (8p)</td>
+                    <td><strong>57</strong></td>
+                </tr>
+                <tr class="" data-track-rating="132.1">
+                    <td>5</td>
+                    <td>2</td>
+                    <td>KAANHAKAN</td>
+                    <td>132.1 (2p)</td>
+                    <td>132.3 (5p)</td>
+                    <td>140.0 (6p)</td>
+                    <td>F.YARDIMCI</td>
+                    <td>127.6 (8p)</td>
+                    <td>130.0 (9p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>131.2 (8p)</td>
+                    <td>120.1s (6p)</td>
+                    <td><strong>54</strong></td>
+                </tr>
+                <tr class="" data-track-rating="129.9">
+                    <td>6</td>
+                    <td>5</td>
+                    <td>YAĞIZALP</td>
+                    <td>129.9</td>
+                    <td>139.0 (9p)</td>
+                    <td><span class="lightning">⚡148.0 (10p)</span></td>
+                    <td>İ.AKYAVUZ</td>
+                    <td>127.7 (9p)</td>
+                    <td>127.3 (8p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>121.2 (5p)</td>
+                    <td>123.5s (3p)</td>
+                    <td><strong>54</strong></td>
+                </tr>
+                <tr class="" data-track-rating="127.7">
+                    <td>7</td>
+                    <td>12</td>
+                    <td>YOLKIRAN</td>
+                    <td>127.7</td>
+                    <td>132.3 (5p)</td>
+                    <td><span class="lightning">⚡148.0 (10p)</span></td>
+                    <td>İ.KATAR</td>
+                    <td>121.6 (3p)</td>
+                    <td>122.7 (4p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>133.8 (9p)</td>
+                    <td>119.2s (7p)</td>
+                    <td><strong>48</strong></td>
+                </tr>
+                <tr class="" data-track-rating="133.2">
+                    <td>8</td>
+                    <td>9</td>
+                    <td>BALLIYARIM</td>
+                    <td>133.2 (6p)</td>
+                    <td>128.3 (3p)</td>
+                    <td>140.0 (6p)</td>
+                    <td>H.ALTUNKILIÇ</td>
+                    <td>121.8 (5p)</td>
+                    <td>121.3 (2p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>131.2 (8p)</td>
+                    <td>120.1s (6p)</td>
+                    <td><strong>46</strong></td>
+                </tr>
+                <tr class="" data-track-rating="132.4">
+                    <td>9</td>
+                    <td>10</td>
+                    <td>BİTİRİM SEDA</td>
+                    <td>132.4 (3p)</td>
+                    <td>131.0 (4p)</td>
+                    <td>143.2 (8p)</td>
+                    <td>M.B.ÇAKMAK</td>
+                    <td>121.7 (4p)</td>
+                    <td>123.3 (5p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>130.0 (7p)</td>
+                    <td>120.5s (5p)</td>
+                    <td><strong>46</strong></td>
+                </tr>
+                <tr class="" data-track-rating="131.8">
+                    <td>10</td>
+                    <td>6</td>
+                    <td>BABA MERCAN</td>
+                    <td>131.8 (1p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡148.0 (10p)</span></td>
+                    <td>H.ALTUNDAĞ</td>
+                    <td>122.8 (6p)</td>
+                    <td>120.0 (1p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>108.8 (4p)</td>
+                    <td>127.9s (2p)</td>
+                    <td><strong>44</strong></td>
+                </tr>
+            </tbody>
+        </table></div>
+    <div class="race-section">
+        <div class="race-header">
+            <div>
+                📋 8.koşu - 🏁 Kum - 📏 1200m
+                <br><small>📝 Maiden , 2 Yaşlı İngilizler,  57 kg,                      1200  Kum , E.İ.D. : 1.12.50</small>
+            </div>
+            <div>
+                <button class="filter-btn" onclick="filterWinners(7)">💣 Kazanacaklar</button>
+                <button class="reset-btn" onclick="resetFilter(7)">🔄 Tümü</button>
+            </div>
+        </div>
+
+        <table id="race-table-7">
+            <thead>
+                <tr>
+                    <th>Sıra</th>
+                    <th>Program</th>
+                    <th>At Adı</th><th>Kum Rating</th><th>Mevcut Yetenek</th>
+                    <th>IFHA Rating</th>
+                    <th>Jokey</th><th>J-Kum Rating</th><th>J-Mevcut</th>
+                    <th>J-IFHA</th>
+                    <th>Galop Ort.</th>
+                    <th>Tahmini Süre</th>
+                    <th>TOPLAM PUAN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="rank-1" data-track-rating="138.3">
+                    <td>1</td>
+                    <td>4</td>
+                    <td>MY ARES</td>
+                    <td><span class="lightning">⚡138.3 (10p)</span></td>
+                    <td><span class="lightning">⚡138.3 (10p)</span></td>
+                    <td><span class="lightning">⚡146.4 (10p)</span></td>
+                    <td>N.ALTIN</td>
+                    <td><span class="lightning">⚡128.6 (10p)</span></td>
+                    <td>133.3 (9p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡76.2s (10p)</span> <span class="star">⭐</span></td>
+                    <td><strong>94 <span class="star">⭐</span></strong></td>
+                </tr>
+                <tr class="rank-2" data-track-rating="134.2">
+                    <td>2</td>
+                    <td>12</td>
+                    <td>REALISTIC GIRL</td>
+                    <td>134.2 (8p)</td>
+                    <td>134.2 (8p)</td>
+                    <td>140.0 (7p)</td>
+                    <td>F.YARDIMCI</td>
+                    <td>127.6 (8p)</td>
+                    <td>130.0 (8p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>78.0s (9p)</td>
+                    <td><strong>68</strong></td>
+                </tr>
+                <tr class="rank-3" data-track-rating="136.7">
+                    <td>3</td>
+                    <td>9</td>
+                    <td>PEANUT GIRL</td>
+                    <td>136.7 (9p)</td>
+                    <td>136.7 (9p)</td>
+                    <td>141.7 (9p)</td>
+                    <td>Y.ÇELİKBAŞ</td>
+                    <td>120.9 (2p)</td>
+                    <td><span class="lightning">⚡134.7 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>80.4s (5p)</td>
+                    <td><strong>64</strong></td>
+                </tr>
+                <tr class="" data-track-rating="133.7">
+                    <td>4</td>
+                    <td>10</td>
+                    <td>NİFPAR</td>
+                    <td>133.7 (7p)</td>
+                    <td>133.7 (7p)</td>
+                    <td>140.1 (8p)</td>
+                    <td>Y.CENGİZ</td>
+                    <td>117.8</td>
+                    <td>126.7 (6p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>78.0s (9p)</td>
+                    <td><strong>57</strong></td>
+                </tr>
+                <tr class="" data-track-rating="126.1">
+                    <td>5</td>
+                    <td>8</td>
+                    <td>VAN KALESİ</td>
+                    <td>126.1 (3p)</td>
+                    <td>126.1 (4p)</td>
+                    <td>133.8 (5p)</td>
+                    <td>İ.AKYAVUZ</td>
+                    <td>127.7 (9p)</td>
+                    <td>127.3 (7p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>79.5s (6p)</td>
+                    <td><strong>54</strong></td>
+                </tr>
+                <tr class="" data-track-rating="130.6">
+                    <td>6</td>
+                    <td>5</td>
+                    <td>RANIL OĞLU</td>
+                    <td>130.6 (6p)</td>
+                    <td>130.3 (6p)</td>
+                    <td><span class="lightning">⚡146.4 (10p)</span></td>
+                    <td>H.KATI</td>
+                    <td>118.7</td>
+                    <td>123.3 (3p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>78.6s (8p)</td>
+                    <td><strong>53</strong></td>
+                </tr>
+                <tr class="" data-track-rating="130.0">
+                    <td>7</td>
+                    <td>1</td>
+                    <td>LİON FLIGTLINE</td>
+                    <td>130.0 (5p)</td>
+                    <td>130.0 (5p)</td>
+                    <td>138.3 (6p)</td>
+                    <td>A.H.BAYAR</td>
+                    <td>125.5 (7p)</td>
+                    <td>126.0 (5p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>81.0s (3p)</td>
+                    <td><strong>51</strong></td>
+                </tr>
+                <tr class="" data-track-rating="108.3">
+                    <td>8</td>
+                    <td>3</td>
+                    <td>MONETA FLY</td>
+                    <td>108.3 (1p)</td>
+                    <td>116.7 (1p)</td>
+                    <td>133.8 (5p)</td>
+                    <td>M.B.ÇAKMAK</td>
+                    <td>121.7 (4p)</td>
+                    <td>123.3 (3p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>78.0s (9p)</td>
+                    <td><strong>43</strong></td>
+                </tr>
+                <tr class="" data-track-rating="126.7">
+                    <td>9</td>
+                    <td>7</td>
+                    <td>ÜÇYÜREK</td>
+                    <td>126.7 (4p)</td>
+                    <td>125.0 (3p)</td>
+                    <td>140.0 (7p)</td>
+                    <td>H.ALTUNKILIÇ</td>
+                    <td>121.8 (5p)</td>
+                    <td>121.3 (1p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>82.0s (2p)</td>
+                    <td><strong>42</strong></td>
+                </tr>
+                <tr class="" data-track-rating="123.3">
+                    <td>10</td>
+                    <td>11</td>
+                    <td>NOVA KING</td>
+                    <td>123.3 (2p)</td>
+                    <td>123.3 (2p)</td>
+                    <td>133.8 (5p)</td>
+                    <td>İ.KATAR</td>
+                    <td>121.6 (3p)</td>
+                    <td>122.7 (2p)</td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td><span class="lightning">⚡140.0 (10p)</span></td>
+                    <td>78.9s (7p)</td>
+                    <td><strong>41</strong></td>
+                </tr>
+            </tbody>
+        </table></div>
+    <div class="summary">
+        <h3>📈 ANALİZ ÖZETİ</h3>
+        <ul>
+            <li><strong>Toplam Koşu Sayısı:</strong> 8</li>
+            <li><strong>Analiz Tarihi:</strong> 2025-08-27 14:44:19</li>
+            <li><strong>Şehir:</strong> Elazığ</li>
+            <li><strong>Yarış Tarihi:</strong> 20250827</li>
+            <li><strong>Puanlama Sistemi:</strong> Her sütunda benzersiz değerler puanlanır (10-1 arası)</li>
+            <li><strong>⚡ Şimşek:</strong> O sütundaki en yüksek değer</li>
+            <li><strong>Tahmini Süre:</strong> En düşük süre 10 puan, en yüksek 1 puan alır</li>
+            <li><strong>⭐ Yıldız:</strong> 1200-1500m yarışlarda en hızlı tahmini süreye +15 puan bonus</li>
+            <li><strong>💣 Kazanacaklar:</strong> Pist rating'ine göre en yüksek 5 atı filtreler</li>
+            <li><strong>Aynı değere sahip atlar aynı puanı alır</strong></li>
+        </ul>
+    </div>
+
+    <script>
+        function filterWinners(raceIndex) {
+            const table = document.getElementById(`race-table-${raceIndex}`);
+            const rows = table.querySelectorAll('tbody tr');
+            
+            // Tüm rating değerlerini topla ve sırala
+            const ratings = [];
+            rows.forEach(row => {
+                const rating = parseFloat(row.getAttribute('data-track-rating'));
+                if (rating > 0) {
+                    ratings.push({ rating, row });
+                }
+            });
+            
+            // Rating'e göre azalan sırada sırala
+            ratings.sort((a, b) => b.rating - a.rating);
+            
+            // Tüm satırları gizle
+            rows.forEach(row => {
+                row.style.display = 'none';
+                row.classList.remove('winner-highlight');
+            });
+            
+            // En yüksek rating'li ilk 5 atı göster ve öne çıkar
+            ratings.slice(0, 5).forEach((item, index) => {
+                item.row.style.display = '';
+                item.row.classList.add('winner-highlight');
+                // Sıralamayı güncelle
+                item.row.cells[0].textContent = index + 1;
+            });
+        }
+        
+        function resetFilter(raceIndex) {
+            const table = document.getElementById(`race-table-${raceIndex}`);
+            const rows = table.querySelectorAll('tbody tr');
+            
+            // Tüm satırları göster ve orijinal sıralamayı geri getir
+            rows.forEach((row, index) => {
+                row.style.display = '';
+                row.classList.remove('winner-highlight');
+                row.cells[0].textContent = index + 1;
+            });
+        }
+    </script>
+</body>
+</html>
