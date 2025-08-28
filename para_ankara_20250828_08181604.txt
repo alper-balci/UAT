@@ -1,0 +1,820 @@
+==================================================================================================================================
+🏇 ANKARA HIPODROMU - 20250828 TARİHLİ PUANLAMA ANALİZİ
+==================================================================================================================================
+🎯 SİSTEM: TOPLAM PUANA GÖRE SIRALAMA (Her Sütun 10-1 Puan)
+📊 METOD: 8 farklı kritere göre puanlama (⚡ = O sütundaki en yüksek değer)
+📌 NOT: Aynı değere sahip atlar aynı puanı alır
+⭐ BONUS: 1200-1500m yarışlarda en hızlı tahmini süreye +15 puan
+==================================================================================================================================
+
+📋 1.koşu
+🏁 Pist Tipi: Çim
+📏 Koşu Mesafesi: 2200m
+📝 Şartlar: Handikap 16 /H1 , 3 Yaşlı İngilizler,                       2200  Çim , E.İ.D. : 2.14.10
+--------------------------------------------------------------------------------------------------------------
+🏆 TOPLAM PUANA GÖRE SIRALAMA (En İyi 10 At):
+
+1. 🐎 3 - YELLOW GOLD [TOPLAM: 73 PUAN]
+   🏁 Çim Rating: ⚡140.0 (10p)
+   💪 Mevcut Yetenek: ⚡140.0 (10p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: A.ÇELİK
+      🏁 Jokey Çim Rating: 131.0 (9p)
+      💪 Jokey Mevcut Yetenek: 130.7 (8p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (2200m): 148.7s (6p)
+
+2. 🐎 5 - MON BİJOU [TOPLAM: 73 PUAN]
+   🏁 Çim Rating: 138.3 (8p)
+   💪 Mevcut Yetenek: 128.7 (6p)
+   🌍 IFHA Rating: 141.7 (9p)
+   🏇 Jokey: G.KOCAKAYA
+      🏁 Jokey Çim Rating: ⚡132.9 (10p)
+      💪 Jokey Mevcut Yetenek: ⚡135.3 (10p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (2200m): ⚡141.4s (10p)
+
+3. 🐎 4 - TRUELY [TOPLAM: 72 PUAN]
+   🏁 Çim Rating: 137.8 (7p)
+   💪 Mevcut Yetenek: 138.0 (9p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: M.S.ÇELİK
+      🏁 Jokey Çim Rating: 130.5 (8p)
+      💪 Jokey Mevcut Yetenek: 130.7 (8p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (2200m): ⚡141.4s (10p)
+
+4. 🐎 2 - WE ARE THE BEST [TOPLAM: 67 PUAN]
+   🏁 Çim Rating: 139.2 (9p)
+   💪 Mevcut Yetenek: 135.7 (8p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: H.ÇANAKÇI
+      🏁 Jokey Çim Rating: 118.6 (5p)
+      💪 Jokey Mevcut Yetenek: 122.7 (7p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (2200m): 145.9s (8p)
+
+5. 🐎 1 - CRAZY TİZ [TOPLAM: 63 PUAN]
+   🏁 Çim Rating: 129.0 (5p)
+   💪 Mevcut Yetenek: 125.7 (5p)
+   🌍 IFHA Rating: 140.0 (8p)
+   🏇 Jokey: F.S.M.SANSAR
+      🏁 Jokey Çim Rating: 129.1 (7p)
+      💪 Jokey Mevcut Yetenek: 132.0 (9p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (2200m): 143.1s (9p)
+
+6. 🐎 6 - GHİSCAR [TOPLAM: 62 PUAN]
+   🏁 Çim Rating: 131.2 (6p)
+   💪 Mevcut Yetenek: 132.7 (7p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: M.BAYIR
+      🏁 Jokey Çim Rating: 123.2 (6p)
+      💪 Jokey Mevcut Yetenek: 115.3 (6p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (2200m): 147.0s (7p)
+
+==================================================================================================================================
+
+📋 2.koşu
+🏁 Pist Tipi: Çim
+📏 Koşu Mesafesi: 1200m
+📝 Şartlar: Handikap 14/DHÖW /H2 , 3 Yaşlı Araplar,                       1200  Çim , E.İ.D. : 1.16.76
+--------------------------------------------------------------------------------------------------------------
+🏆 TOPLAM PUANA GÖRE SIRALAMA (En İyi 10 At):
+
+1. 🐎 4 - ZİDAN [TOPLAM: 87 PUAN (+15 En Hızlı Bonus)]
+   🏁 Çim Rating: 133.9 (8p)
+   💪 Mevcut Yetenek: 132.0 (7p)
+   🌍 IFHA Rating: 135.3 (7p)
+   🏇 Jokey: M.S.ÇELİK
+      🏁 Jokey Çim Rating: ⚡130.5 (10p)
+      💪 Jokey Mevcut Yetenek: ⚡130.7 (10p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1200m): ⚡79.5s (10p) ⭐
+
+2. 🐎 1 - KUZGUNİ YEŞİL [TOPLAM: 71 PUAN]
+   🏁 Çim Rating: ⚡139.2 (10p)
+   💪 Mevcut Yetenek: ⚡139.3 (10p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: F.ÇETİNBAŞ
+      🏁 Jokey Çim Rating: 125.3 (9p)
+      💪 Jokey Mevcut Yetenek: 121.3 (7p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: 133.8 (8p)
+      ⏱️ Tahmini Süre (1200m): 82.5s (7p)
+
+3. 🐎 3 - GÜNGELDİ AĞA [TOPLAM: 70 PUAN]
+   🏁 Çim Rating: 137.5 (9p)
+   💪 Mevcut Yetenek: 136.7 (9p)
+   🌍 IFHA Rating: 144.8 (9p)
+   🏇 Jokey: N.DEMİR
+      🏁 Jokey Çim Rating: 119.9 (7p)
+      💪 Jokey Mevcut Yetenek: 128.7 (9p)
+      🌍 Jokey IFHA Rating: 133.3 (8p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1200m): 81.0s (9p)
+
+4. 🐎 2 - ŞEVVALNUR [TOPLAM: 67 PUAN]
+   🏁 Çim Rating: 133.9 (8p)
+   💪 Mevcut Yetenek: 136.0 (8p)
+   🌍 IFHA Rating: 140.0 (8p)
+   🏇 Jokey: M.KIYAK
+      🏁 Jokey Çim Rating: 123.7 (8p)
+      💪 Jokey Mevcut Yetenek: 124.0 (8p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: 136.2 (9p)
+      ⏱️ Tahmini Süre (1200m): 81.9s (8p)
+
+5. 🐎 5 - BEŞİRİN OĞLU [TOPLAM: 57 PUAN]
+   🏁 Çim Rating: 125.8 (7p)
+   💪 Mevcut Yetenek: 120.7 (6p)
+   🌍 IFHA Rating: 140.0 (8p)
+   🏇 Jokey: E.ATLAMAZ
+      🏁 Jokey Çim Rating: 123.7 (8p)
+      💪 Jokey Mevcut Yetenek: 120.7 (6p)
+      🌍 Jokey IFHA Rating: 136.7 (9p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: 127.5 (7p)
+      ⏱️ Tahmini Süre (1200m): 84.0s (6p)
+
+==================================================================================================================================
+
+📋 3.koşu
+🏁 Pist Tipi: Çim
+📏 Koşu Mesafesi: 1400m
+📝 Şartlar: Maiden/Dişi , 2 Yaşlı İngilizler,  57 kg,                      1400  Çim , E.İ.D. : 1.21.74
+--------------------------------------------------------------------------------------------------------------
+🏆 TOPLAM PUANA GÖRE SIRALAMA (En İyi 10 At):
+
+1. 🐎 4 - KEMALS ELF [TOPLAM: 82 PUAN (+15 En Hızlı Bonus)]
+   🏁 Çim Rating: ⚡140.0 (10p)
+   💪 Mevcut Yetenek: ⚡140.0 (10p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: O.YILMAZ
+      🏁 Jokey Çim Rating: 116.7 (3p)
+      💪 Jokey Mevcut Yetenek: 107.3 (4p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): ⚡86.8s (10p) ⭐
+
+2. 🐎 8 - SUPER DİVO [TOPLAM: 79 PUAN (+15 En Hızlı Bonus)]
+   🏁 Çim Rating: 133.3 (8p)
+   💪 Mevcut Yetenek: 135.8 (8p)
+   🌍 IFHA Rating: 141.7 (8p)
+   🏇 Jokey: C.AVLİ
+      🏁 Jokey Çim Rating: 121.1 (5p)
+      💪 Jokey Mevcut Yetenek: 124.0 (6p)
+      🌍 Jokey IFHA Rating: 136.7 (9p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): ⚡86.8s (10p) ⭐
+
+3. 🐎 6 - KIZIL ORMAN [TOPLAM: 76 PUAN]
+   🏁 Çim Rating: ⚡140.0 (10p)
+   💪 Mevcut Yetenek: ⚡140.0 (10p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: İ.AKYAVUZ
+      🏁 Jokey Çim Rating: 127.5 (9p)
+      💪 Jokey Mevcut Yetenek: ⚡133.3 (10p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 89.2s (7p)
+
+4. 🐎 5 - KEMALS OMA [TOPLAM: 74 PUAN]
+   🏁 Çim Rating: ⚡140.0 (10p)
+   💪 Mevcut Yetenek: ⚡140.0 (10p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: E.ÇİZİK
+      🏁 Jokey Çim Rating: ⚡130.1 (10p)
+      💪 Jokey Mevcut Yetenek: 126.7 (8p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 89.6s (6p)
+
+5. 🐎 3 - GOOD LUCK CHARM [TOPLAM: 67 PUAN]
+   🏁 Çim Rating: 136.7 (9p)
+   💪 Mevcut Yetenek: 136.7 (9p)
+   🌍 IFHA Rating: 144.8 (9p)
+   🏇 Jokey: A.KURŞUN
+      🏁 Jokey Çim Rating: 126.5 (7p)
+      💪 Jokey Mevcut Yetenek: 123.3 (5p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 88.5s (8p)
+
+6. 🐎 7 - MY LADY BUG [TOPLAM: 65 PUAN]
+   🏁 Çim Rating: 116.7 (7p)
+   💪 Mevcut Yetenek: 116.7 (6p)
+   🌍 IFHA Rating: 125.8 (6p)
+   🏇 Jokey: H.ÇİZİK
+      🏁 Jokey Çim Rating: 126.8 (8p)
+      💪 Jokey Mevcut Yetenek: 131.3 (9p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 87.5s (9p)
+
+7. 🐎 1 - BALİNKA [TOPLAM: 60 PUAN]
+   🏁 Çim Rating: 136.7 (9p)
+   💪 Mevcut Yetenek: 126.7 (7p)
+   🌍 IFHA Rating: 136.9 (7p)
+   🏇 Jokey: M.N.SUNKAR
+      🏁 Jokey Çim Rating: 124.7 (6p)
+      💪 Jokey Mevcut Yetenek: 123.3 (5p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 89.6s (6p)
+
+8. 🐎 2 - FENGBAO [TOPLAM: 37 PUAN]
+   🏁 Çim Rating: -
+   💪 Mevcut Yetenek: -
+   🌍 IFHA Rating: -
+   🏇 Jokey: O.AKGÖNÜL
+      🏁 Jokey Çim Rating: 120.5 (4p)
+      💪 Jokey Mevcut Yetenek: 125.3 (7p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 89.6s (6p)
+
+==================================================================================================================================
+
+📋 4.koşu
+🏁 Pist Tipi: Kum
+📏 Koşu Mesafesi: 1400m
+📝 Şartlar: Kısa Vade Handikap 24/DHÖW /H1 , 4 ve Yukarı Araplar,                       1400  Kum , E.İ.D. : 1.34.92
+--------------------------------------------------------------------------------------------------------------
+🏆 TOPLAM PUANA GÖRE SIRALAMA (En İyi 10 At):
+
+1. 🐎 2 - KALBİMDESİN [TOPLAM: 83 PUAN (+15 En Hızlı Bonus)]
+   🏁 Kum Rating: ⚡139.9 (10p)
+   💪 Mevcut Yetenek: 136.7 (5p)
+   🌍 IFHA Rating: 144.8 (9p)
+   🏇 Jokey: H.KARATAŞ
+      🏁 Jokey Kum Rating: ⚡135.0 (10p)
+      💪 Jokey Mevcut Yetenek: 125.3 (4p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): ⚡88.2s (10p) ⭐
+
+2. 🐎 6 - NEVERLAND [TOPLAM: 70 PUAN]
+   🏁 Kum Rating: 139.0 (8p)
+   💪 Mevcut Yetenek: 139.3 (8p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: S.KAYA
+      🏁 Jokey Kum Rating: 134.1 (9p)
+      💪 Jokey Mevcut Yetenek: 132.7 (9p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 94.5s (6p)
+
+3. 🐎 3 - ÖMÜRÜNOĞLU [TOPLAM: 67 PUAN]
+   🏁 Kum Rating: 136.7 (3p)
+   💪 Mevcut Yetenek: 139.0 (7p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: G.KOCAKAYA
+      🏁 Jokey Kum Rating: 132.7 (8p)
+      💪 Jokey Mevcut Yetenek: ⚡135.3 (10p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 89.2s (9p)
+
+4. 🐎 8 - UZUN DALGA [TOPLAM: 67 PUAN]
+   🏁 Kum Rating: 139.4 (9p)
+   💪 Mevcut Yetenek: ⚡140.0 (10p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: VEDAT ABİŞ
+      🏁 Jokey Kum Rating: 129.6 (6p)
+      💪 Jokey Mevcut Yetenek: 128.7 (6p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 94.5s (6p)
+
+5. 🐎 1 - BEYAZIŞIK [TOPLAM: 65 PUAN]
+   🏁 Kum Rating: 138.5 (7p)
+   💪 Mevcut Yetenek: 138.0 (6p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: A.ÇELİK
+      🏁 Jokey Kum Rating: 131.9 (7p)
+      💪 Jokey Mevcut Yetenek: 130.7 (7p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 93.1s (8p)
+
+6. 🐎 5 - BAY TOSUNOĞLU [TOPLAM: 62 PUAN]
+   🏁 Kum Rating: 137.9 (6p)
+   💪 Mevcut Yetenek: 139.7 (9p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: M.S.ÇELİK
+      🏁 Jokey Kum Rating: 126.2 (4p)
+      💪 Jokey Mevcut Yetenek: 130.7 (7p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 94.5s (6p)
+
+7. 🐎 4 - HEDBE [TOPLAM: 56 PUAN]
+   🏁 Kum Rating: 137.6 (5p)
+   💪 Mevcut Yetenek: 136.0 (4p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: H.ÇİZİK
+      🏁 Jokey Kum Rating: 125.0 (3p)
+      💪 Jokey Mevcut Yetenek: 131.3 (8p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 94.5s (6p)
+
+8. 🐎 7 - HULKİ [TOPLAM: 55 PUAN]
+   🏁 Kum Rating: 137.5 (4p)
+   💪 Mevcut Yetenek: 136.0 (4p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: Ö.YILDIRIM
+      🏁 Jokey Kum Rating: 127.8 (5p)
+      💪 Jokey Mevcut Yetenek: 128.0 (5p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 93.8s (7p)
+
+==================================================================================================================================
+
+📋 5.koşu
+🏁 Pist Tipi: Kum
+📏 Koşu Mesafesi: 1500m
+📝 Şartlar: KV-7 , 3 Yaşlı İngilizler,  58 kg,                      1500  Kum , E.İ.D. : 1.31.14
+--------------------------------------------------------------------------------------------------------------
+🏆 TOPLAM PUANA GÖRE SIRALAMA (En İyi 10 At):
+
+1. 🐎 8 - ORANGE ARMY [TOPLAM: 80 PUAN (+15 En Hızlı Bonus)]
+   🏁 Kum Rating: 138.9 (5p)
+   💪 Mevcut Yetenek: 139.2 (8p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: VEDAT ABİŞ
+      🏁 Jokey Kum Rating: 129.6 (6p)
+      💪 Jokey Mevcut Yetenek: 128.7 (6p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1500m): ⚡91.9s (10p) ⭐
+
+2. 🐎 6 - RAİNY SİOL [TOPLAM: 70 PUAN]
+   🏁 Kum Rating: 139.2 (7p)
+   💪 Mevcut Yetenek: 138.7 (7p)
+   🌍 IFHA Rating: 141.7 (9p)
+   🏇 Jokey: G.KOCAKAYA
+      🏁 Jokey Kum Rating: 132.7 (9p)
+      💪 Jokey Mevcut Yetenek: ⚡135.3 (10p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1500m): 94.5s (8p)
+
+3. 🐎 3 - BLACK PABLO [TOPLAM: 68 PUAN]
+   🏁 Kum Rating: 139.0 (6p)
+   💪 Mevcut Yetenek: 139.3 (9p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: H.KARATAŞ
+      🏁 Jokey Kum Rating: ⚡135.0 (10p)
+      💪 Jokey Mevcut Yetenek: 125.3 (4p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1500m): 92.2s (9p)
+
+4. 🐎 1 - FROSTER [TOPLAM: 65 PUAN]
+   🏁 Kum Rating: ⚡140.0 (10p)
+   💪 Mevcut Yetenek: ⚡140.0 (10p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: A.KURŞUN
+      🏁 Jokey Kum Rating: 131.0 (7p)
+      💪 Jokey Mevcut Yetenek: 123.3 (3p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1500m): 98.3s (5p)
+
+5. 🐎 4 - DRAGON KINGDOM [TOPLAM: 64 PUAN]
+   🏁 Kum Rating: 139.4 (9p)
+   💪 Mevcut Yetenek: ⚡140.0 (10p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: H.ÇİZİK
+      🏁 Jokey Kum Rating: 125.0 (3p)
+      💪 Jokey Mevcut Yetenek: 131.3 (8p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1500m): 99.3s (4p)
+
+6. 🐎 7 - HOOD RIVER [TOPLAM: 62 PUAN]
+   🏁 Kum Rating: 139.3 (8p)
+   💪 Mevcut Yetenek: 138.0 (6p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: E.ÇANKAYA
+      🏁 Jokey Kum Rating: 129.0 (5p)
+      💪 Jokey Mevcut Yetenek: 126.0 (5p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1500m): 94.5s (8p)
+
+7. 🐎 5 - FROU FROU [TOPLAM: 59 PUAN]
+   🏁 Kum Rating: 138.1 (4p)
+   💪 Mevcut Yetenek: 137.3 (5p)
+   🌍 IFHA Rating: 141.7 (9p)
+   🏇 Jokey: A.ÇELİK
+      🏁 Jokey Kum Rating: 131.9 (8p)
+      💪 Jokey Mevcut Yetenek: 130.7 (7p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1500m): 96.8s (6p)
+
+8. 🐎 2 - BEYAZITHAN [TOPLAM: 55 PUAN]
+   🏁 Kum Rating: 137.1 (3p)
+   💪 Mevcut Yetenek: 113.7 (4p)
+   🌍 IFHA Rating: 140.0 (8p)
+   🏇 Jokey: İ.AKYAVUZ
+      🏁 Jokey Kum Rating: 127.5 (4p)
+      💪 Jokey Mevcut Yetenek: 133.3 (9p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1500m): 96.4s (7p)
+
+==================================================================================================================================
+
+📋 6.koşu
+🏁 Pist Tipi: Çim
+📏 Koşu Mesafesi: 1900m
+📝 Şartlar: KV-6/DHÖ , 4 ve Yukarı Araplar,  58 kg, 60 kg,                      1900  Çim , E.İ.D. : 2.06.20
+--------------------------------------------------------------------------------------------------------------
+🏆 TOPLAM PUANA GÖRE SIRALAMA (En İyi 10 At):
+
+1. 🐎 1 - MUZATCAN [TOPLAM: 75 PUAN]
+   🏁 Çim Rating: 138.3 (9p)
+   💪 Mevcut Yetenek: 138.3 (8p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: G.KOCAKAYA
+      🏁 Jokey Çim Rating: ⚡132.9 (10p)
+      💪 Jokey Mevcut Yetenek: ⚡135.3 (10p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1900m): 130.8s (8p)
+
+2. 🐎 4 - BOZKIREFESİ [TOPLAM: 75 PUAN]
+   🏁 Çim Rating: ⚡140.0 (10p)
+   💪 Mevcut Yetenek: ⚡140.0 (10p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: Ö.YILDIRIM
+      🏁 Jokey Çim Rating: 128.4 (7p)
+      💪 Jokey Mevcut Yetenek: 128.0 (8p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1900m): ⚡127.9s (10p)
+
+3. 🐎 2 - BOĞAZ ÇOCUĞU [TOPLAM: 68 PUAN]
+   🏁 Çim Rating: 136.4 (6p)
+   💪 Mevcut Yetenek: 137.7 (7p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: M.S.ÇELİK
+      🏁 Jokey Çim Rating: 130.5 (8p)
+      💪 Jokey Mevcut Yetenek: 130.7 (9p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1900m): 130.8s (8p)
+
+4. 🐎 3 - DİNAMİT [TOPLAM: 66 PUAN]
+   🏁 Çim Rating: 132.5 (5p)
+   💪 Mevcut Yetenek: 134.0 (5p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: A.ÇELİK
+      🏁 Jokey Çim Rating: 131.0 (9p)
+      💪 Jokey Mevcut Yetenek: 130.7 (9p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1900m): 130.8s (8p)
+
+5. 🐎 5 - ÇAKMAKŞAH [TOPLAM: 66 PUAN]
+   🏁 Çim Rating: 137.6 (8p)
+   💪 Mevcut Yetenek: 139.0 (9p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: A.KURŞUN
+      🏁 Jokey Çim Rating: 126.5 (5p)
+      💪 Jokey Mevcut Yetenek: 123.3 (6p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1900m): 130.8s (8p)
+
+6. 🐎 6 - CANKO [TOPLAM: 65 PUAN]
+   🏁 Çim Rating: 136.8 (7p)
+   💪 Mevcut Yetenek: 136.3 (6p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: E.ÇANKAYA
+      🏁 Jokey Çim Rating: 126.6 (6p)
+      💪 Jokey Mevcut Yetenek: 126.0 (7p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1900m): 128.4s (9p)
+
+==================================================================================================================================
+
+📋 7.koşu
+🏁 Pist Tipi: Kum
+📏 Koşu Mesafesi: 1400m
+📝 Şartlar: KV-8/Dişi , 3 ve Yukarı İngilizler,  55.50 kg, 60 kg, 60 kg,                     1400  Kum , E.İ.D. : 1.24.28
+--------------------------------------------------------------------------------------------------------------
+🏆 TOPLAM PUANA GÖRE SIRALAMA (En İyi 10 At):
+
+1. 🐎 5 - PEKERİM [TOPLAM: 85 PUAN (+15 En Hızlı Bonus)]
+   🏁 Kum Rating: 139.6 (9p)
+   💪 Mevcut Yetenek: 126.7 (6p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: E.ÇANKAYA
+      🏁 Jokey Kum Rating: 129.0 (8p)
+      💪 Jokey Mevcut Yetenek: 126.0 (7p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): ⚡86.1s (10p) ⭐
+
+2. 🐎 1 - MADAM ORACLE [TOPLAM: 72 PUAN]
+   🏁 Kum Rating: 139.2 (7p)
+   💪 Mevcut Yetenek: 139.7 (9p)
+   🌍 IFHA Rating: 146.4 (9p)
+   🏇 Jokey: A.ÇELİK
+      🏁 Jokey Kum Rating: 131.9 (9p)
+      💪 Jokey Mevcut Yetenek: 130.7 (9p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 86.5s (9p)
+
+3. 🐎 3 - PRENSES SYLVESTER [TOPLAM: 72 PUAN]
+   🏁 Kum Rating: ⚡139.7 (10p)
+   💪 Mevcut Yetenek: ⚡140.0 (10p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: Ö.YILDIRIM
+      🏁 Jokey Kum Rating: 127.8 (7p)
+      💪 Jokey Mevcut Yetenek: 128.0 (8p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 89.2s (7p)
+
+4. 🐎 2 - MON COEUR [TOPLAM: 71 PUAN]
+   🏁 Kum Rating: 139.4 (8p)
+   💪 Mevcut Yetenek: 135.3 (7p)
+   🌍 IFHA Rating: 140.0 (8p)
+   🏇 Jokey: G.KOCAKAYA
+      🏁 Jokey Kum Rating: ⚡132.7 (10p)
+      💪 Jokey Mevcut Yetenek: ⚡135.3 (10p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 87.5s (8p)
+
+5. 🐎 4 - EL RIO [TOPLAM: 68 PUAN]
+   🏁 Kum Rating: 138.4 (6p)
+   💪 Mevcut Yetenek: 138.0 (8p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: M.S.ÇELİK
+      🏁 Jokey Kum Rating: 126.2 (6p)
+      💪 Jokey Mevcut Yetenek: 130.7 (9p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 86.5s (9p)
+
+==================================================================================================================================
+
+📋 8.koşu
+🏁 Pist Tipi: Çim
+📏 Koşu Mesafesi: 2200m
+📝 Şartlar: ŞARTLI 4/Y2 , 3 ve Yukarı İngilizler,  55 kg, 60 kg, 60 kg,                     2200  Çim , E.İ.D. : 2.14.10
+--------------------------------------------------------------------------------------------------------------
+🏆 TOPLAM PUANA GÖRE SIRALAMA (En İyi 10 At):
+
+1. 🐎 4 - SOLİDO HERMANOS [TOPLAM: 75 PUAN]
+   🏁 Çim Rating: 135.3 (8p)
+   💪 Mevcut Yetenek: ⚡139.0 (10p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: İSM.YILDIRIM
+      🏁 Jokey Çim Rating: 124.3 (8p)
+      💪 Jokey Mevcut Yetenek: ⚡123.3 (10p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (2200m): 138.0s (9p)
+
+2. 🐎 3 - BOUCHERON [TOPLAM: 73 PUAN]
+   🏁 Çim Rating: 136.6 (9p)
+   💪 Mevcut Yetenek: 138.7 (9p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: SALİH ÇELİK
+      🏁 Jokey Çim Rating: 125.0 (9p)
+      💪 Jokey Mevcut Yetenek: 115.3 (6p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (2200m): ⚡136.9s (10p)
+
+3. 🐎 2 - UMUTBEY [TOPLAM: 67 PUAN]
+   🏁 Çim Rating: ⚡136.7 (10p)
+   💪 Mevcut Yetenek: 135.7 (8p)
+   🌍 IFHA Rating: 140.1 (8p)
+   🏇 Jokey: K.DEMİREL
+      🏁 Jokey Çim Rating: 123.6 (7p)
+      💪 Jokey Mevcut Yetenek: 122.7 (9p)
+      🌍 Jokey IFHA Rating: 133.3 (9p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (2200m): 141.9s (6p)
+
+4. 🐎 5 - SHEVCHENKO [TOPLAM: 64 PUAN]
+   🏁 Çim Rating: 134.4 (7p)
+   💪 Mevcut Yetenek: 132.0 (7p)
+   🌍 IFHA Rating: 140.0 (7p)
+   🏇 Jokey: E.AKPINAR
+      🏁 Jokey Çim Rating: ⚡125.8 (10p)
+      💪 Jokey Mevcut Yetenek: 118.7 (8p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (2200m): 148.1s (5p)
+
+5. 🐎 1 - OCEAN EMPIRE [TOPLAM: 61 PUAN]
+   🏁 Çim Rating: 132.0 (6p)
+   💪 Mevcut Yetenek: 127.0 (5p)
+   🌍 IFHA Rating: 140.0 (7p)
+   🏇 Jokey: H.ÇANAKÇI
+      🏁 Jokey Çim Rating: 118.6 (6p)
+      💪 Jokey Mevcut Yetenek: 122.7 (9p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (2200m): 139.7s (8p)
+
+6. 🐎 6 - SILVER PILOT [TOPLAM: 57 PUAN]
+   🏁 Çim Rating: 131.1 (5p)
+   💪 Mevcut Yetenek: 128.0 (6p)
+   🌍 IFHA Rating: 144.8 (9p)
+   🏇 Jokey: T.BALİ
+      🏁 Jokey Çim Rating: 116.7 (5p)
+      💪 Jokey Mevcut Yetenek: 117.3 (7p)
+      🌍 Jokey IFHA Rating: 130.0 (8p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (2200m): 140.2s (7p)
+
+==================================================================================================================================
+
+📋 9.koşu
+🏁 Pist Tipi: Çim
+📏 Koşu Mesafesi: 1400m
+📝 Şartlar: Maiden/Dişi , 2 Yaşlı İngilizler,  57 kg,                      1400  Çim , E.İ.D. : 1.21.74
+--------------------------------------------------------------------------------------------------------------
+🏆 TOPLAM PUANA GÖRE SIRALAMA (En İyi 10 At):
+
+1. 🐎 2 - HIZKESEN [TOPLAM: 80 PUAN (+15 En Hızlı Bonus)]
+   🏁 Çim Rating: 131.1 (7p)
+   💪 Mevcut Yetenek: 131.1 (7p)
+   🌍 IFHA Rating: 140.0 (8p)
+   🏇 Jokey: E.ÇİZİK
+      🏁 Jokey Çim Rating: 130.1 (7p)
+      💪 Jokey Mevcut Yetenek: 126.7 (6p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): ⚡88.2s (10p) ⭐
+
+2. 🐎 8 - VERAGORN [TOPLAM: 75 PUAN]
+   🏁 Çim Rating: ⚡140.0 (10p)
+   💪 Mevcut Yetenek: ⚡140.0 (10p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: A.ÇELİK
+      🏁 Jokey Çim Rating: 131.0 (9p)
+      💪 Jokey Mevcut Yetenek: 130.7 (8p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 88.9s (8p)
+
+3. 🐎 3 - ICE DROPS [TOPLAM: 74 PUAN]
+   🏁 Çim Rating: 136.7 (9p)
+   💪 Mevcut Yetenek: 136.7 (9p)
+   🌍 IFHA Rating: 144.8 (9p)
+   🏇 Jokey: G.KOCAKAYA
+      🏁 Jokey Çim Rating: ⚡132.9 (10p)
+      💪 Jokey Mevcut Yetenek: ⚡135.3 (10p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 89.2s (7p)
+
+4. 🐎 1 - HIGH HILLS [TOPLAM: 72 PUAN]
+   🏁 Çim Rating: ⚡140.0 (10p)
+   💪 Mevcut Yetenek: ⚡140.0 (10p)
+   🌍 IFHA Rating: ⚡148.0 (10p)
+   🏇 Jokey: VEDAT ABİŞ
+      🏁 Jokey Çim Rating: 128.1 (6p)
+      💪 Jokey Mevcut Yetenek: 128.7 (7p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 88.5s (9p)
+
+5. 🐎 5 - NAMASTE [TOPLAM: 72 PUAN (+15 En Hızlı Bonus)]
+   🏁 Çim Rating: 130.0 (6p)
+   💪 Mevcut Yetenek: 130.0 (6p)
+   🌍 IFHA Rating: 138.5 (7p)
+   🏇 Jokey: O.AKGÖNÜL
+      🏁 Jokey Çim Rating: 120.5 (3p)
+      💪 Jokey Mevcut Yetenek: 125.3 (5p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): ⚡88.2s (10p) ⭐
+
+6. 🐎 6 - NIGHT LOVE [TOPLAM: 70 PUAN]
+   🏁 Çim Rating: 136.7 (9p)
+   💪 Mevcut Yetenek: 136.7 (9p)
+   🌍 IFHA Rating: 144.8 (9p)
+   🏇 Jokey: M.S.ÇELİK
+      🏁 Jokey Çim Rating: 130.5 (8p)
+      💪 Jokey Mevcut Yetenek: 130.7 (8p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 89.2s (7p)
+
+7. 🐎 4 - KIZIM ZEHRA [TOPLAM: 63 PUAN]
+   🏁 Çim Rating: 132.9 (8p)
+   💪 Mevcut Yetenek: 132.0 (8p)
+   🌍 IFHA Rating: 140.0 (8p)
+   🏇 Jokey: H.ÇİZİK
+      🏁 Jokey Çim Rating: 126.8 (5p)
+      💪 Jokey Mevcut Yetenek: 131.3 (9p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 92.8s (5p)
+
+8. 🐎 7 - THON KHITCHIBA [TOPLAM: 53 PUAN]
+   🏁 Çim Rating: 130.0 (6p)
+   💪 Mevcut Yetenek: 130.0 (6p)
+   🌍 IFHA Rating: 138.5 (7p)
+   🏇 Jokey: F.ÇETİNBAŞ
+      🏁 Jokey Çim Rating: 125.3 (4p)
+      💪 Jokey Mevcut Yetenek: 121.3 (4p)
+      🌍 Jokey IFHA Rating: ⚡140.0 (10p)
+   🏃 Galop Analizi:
+      📊 Ortalama Rating: ⚡140.0 (10p)
+      ⏱️ Tahmini Süre (1400m): 90.0s (6p)
+
+==================================================================================================================================
+
+📈 ANALİZ ÖZETİ:
+• Toplam Koşu Sayısı: 9
+• Analiz Tarihi: 2025-08-28 11:16:42
+• Şehir: Ankara
+• Yarış Tarihi: 20250828
+• Puanlama Sistemi: Her sütunda benzersiz değerler puanlanır (10-1 arası)
+• ⚡ Şimşek: O sütundaki en yüksek değer
+• Tahmini Süre: En düşük süre 10 puan, en yüksek 1 puan alır
+• ⭐ Yıldız: 1200-1500m yarışlarda en hızlı tahmini süreye +15 puan bonus
+• Aynı değere sahip atlar aynı puanı alır
