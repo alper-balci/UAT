@@ -1,0 +1,2960 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>At Yarışı Analizi - AI Tahmin Sistemi</title>
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container { max-width: 1600px; margin: 0 auto; }
+        
+        h1 {
+            text-align: center;
+            color: white !important;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .race-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h2 {
+            color: #000;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            color: #000;
+        }
+        
+        .race-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .race-info p, .race-info strong {
+            color: #000;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+        
+        th {
+            background: white !important;
+            color: #000 !important;
+            padding: 10px 5px;
+            text-align: center;
+            font-weight: 600;
+            border: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        td {
+            padding: 8px 5px;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: center;
+            color: #000;
+        }
+        
+        tr:hover { background: #f5f5f5; }
+        
+        .highlight {
+            background: #fff3cd !important;
+            font-weight: bold;
+        }
+        
+        /* AI Tahmin kupası için özel stil */
+        .ai-trophy {
+            display: inline-block;
+            font-size: 1.1em;
+            margin-left: 8px;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        /* Renk kodlamaları */
+        .at-section { background: #e3f2fd !important; }
+        .antrenor-section { background: #f3e5f5 !important; }
+        .genel-toplam { 
+            background: #ffebee !important; 
+            font-weight: bold;
+        }
+        .reyting-section { background: #e8f5e9 !important; }
+        
+        .kombinasyon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white !important;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .kombinasyon td {
+            color: white !important;
+        }
+        
+        .sira-no {
+            background: #333;
+            color: white !important;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .birinci { background: gold; color: #000 !important; }
+        .ikinci { background: silver; color: #000 !important; }
+        .ucuncu { background: #cd7f32; color: white !important; }
+        
+        /* Dürbün bölümü */
+        .durbun-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f0f4ff;
+            border-radius: 10px;
+            border: 2px solid #667eea;
+        }
+        
+        .durbun-section h3 {
+            color: #000;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .durbun-table {
+            background: white;
+            border-radius: 5px;
+        }
+        
+        .durbun-table th {
+            background: white !important;
+            color: #000 !important;
+            font-size: 0.85em;
+            border: 1px solid #ddd;
+        }
+        
+        .durbun-table td {
+            color: #000;
+            padding: 6px 4px;
+        }
+        
+        /* Footer metinleri */
+        .footer-text {
+            color: white !important;
+        }
+        
+        @media print {
+            body { background: white; }
+            .race-container { box-shadow: none; border: 1px solid #ddd; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏇 AT YARIŞI ANALİZİ - AI TAHMİN SİSTEMİ 🏇</h1>
+
+                <div class="race-container">
+                    <h2>🏁 1. Koşu - 1200m Çim</h2>
+                    <div class="race-info">
+                        <p><strong>TJK Koşu No:</strong> 219977</p>
+                        <p><strong>Koşu Şartları:</strong> Handikap 16/DHÖ /H1 , 4 Yaşlı Araplar,<br><br><br>                    1200<br><br>Çim , E.İ.D. : 1.16.50</p>
+                    </div>
+                
+        <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">Sıra</th>
+                    <th rowspan="2">At</th>
+                    <th rowspan="2">No</th>
+                    <th rowspan="2">Kg</th>
+                    <th rowspan="2">Jokey</th>
+                    <th colspan="4" class="at-section">At Performansı</th>
+                    <th colspan="5" class="antrenor-section">Antrenör</th>
+                    <th rowspan="2" class="genel-toplam">Genel<br>Toplam</th>
+                    <th rowspan="2" class="reyting-section">Reyting</th>
+                    <th rowspan="2" class="kombinasyon">Final<br>Puan</th>
+                </tr>
+                <tr>
+                    <th class="at-section">Son5</th>
+                    <th class="at-section">Son3</th>
+                    <th class="at-section">Son1</th>
+                    <th class="at-section">Top</th>
+                    <th class="antrenor-section">İsim</th>
+                    <th class="antrenor-section">S20</th>
+                    <th class="antrenor-section">S10</th>
+                    <th class="antrenor-section">S5</th>
+                    <th class="antrenor-section">Top</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+                <tr class="highlight">
+                    <td><span class="sira-no birinci">1</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 GÜL DERYA <span class='ai-trophy'>🏆2</span></td>
+                    <td>5</td>
+                    <td>51.5</td>
+                    <td style="color:#000;">HAK.YILDIZ</td>
+                    <td class="at-section">62.55</td>
+                    <td class="at-section">75.84</td>
+                    <td class="at-section">85.71</td>
+                    <td class="at-section"><b>224.11</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">A.ŞEKER</td>
+                    <td class="antrenor-section">75.94</td>
+                    <td class="antrenor-section">75.94</td>
+                    <td class="antrenor-section">80.76</td>
+                    <td class="antrenor-section"><b>232.64</b></td>
+                    <td class="genel-toplam">456.75</td>
+                    <td class="reyting-section">1662</td>
+                    <td class="kombinasyon">539.85</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ikinci">2</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 YANACAK <span class='ai-trophy'>🏆1</span></td>
+                    <td>1</td>
+                    <td>62.0</td>
+                    <td style="color:#000;">M.M.BİLGİN</td>
+                    <td class="at-section">77.91</td>
+                    <td class="at-section">78.06</td>
+                    <td class="at-section">87.5</td>
+                    <td class="at-section"><b>243.46</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">B.TANRIKULU</td>
+                    <td class="antrenor-section">46.01</td>
+                    <td class="antrenor-section">39.37</td>
+                    <td class="antrenor-section">37.92</td>
+                    <td class="antrenor-section"><b>123.29</b></td>
+                    <td class="genel-toplam">366.75</td>
+                    <td class="reyting-section">1739</td>
+                    <td class="kombinasyon">453.7</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ucuncu">3</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 DURUSU BEYİ <span class='ai-trophy'>🏆4</span></td>
+                    <td>7</td>
+                    <td>50.0</td>
+                    <td style="color:#000;">E.AVŞAR</td>
+                    <td class="at-section">65.69</td>
+                    <td class="at-section">65.36</td>
+                    <td class="at-section">54.55</td>
+                    <td class="at-section"><b>185.6</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">U.TEMUÇİN</td>
+                    <td class="antrenor-section">33.73</td>
+                    <td class="antrenor-section">38.86</td>
+                    <td class="antrenor-section">48.17</td>
+                    <td class="antrenor-section"><b>120.77</b></td>
+                    <td class="genel-toplam">306.37</td>
+                    <td class="reyting-section">1678</td>
+                    <td class="kombinasyon">390.27</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">4</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">BENDENİZ</td>
+                    <td>4</td>
+                    <td>55.0</td>
+                    <td style="color:#000;">A.ÇELİK</td>
+                    <td class="at-section">60.94</td>
+                    <td class="at-section">50.0</td>
+                    <td class="at-section">50.0</td>
+                    <td class="at-section"><b>160.94</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">E.ÇUKURKAŞ</td>
+                    <td class="antrenor-section">50.63</td>
+                    <td class="antrenor-section">50.4</td>
+                    <td class="antrenor-section">40.73</td>
+                    <td class="antrenor-section"><b>141.76</b></td>
+                    <td class="genel-toplam">302.69</td>
+                    <td class="reyting-section">1654</td>
+                    <td class="kombinasyon">385.39</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">5</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 BOĞUŞLU <span class='ai-trophy'>🏆3</span></td>
+                    <td>6</td>
+                    <td>54.5</td>
+                    <td style="color:#000;">G.ÖZÇELİK</td>
+                    <td class="at-section">58.89</td>
+                    <td class="at-section">43.7</td>
+                    <td class="at-section">22.22</td>
+                    <td class="at-section"><b>124.81</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">E.ERGÖKÇEN</td>
+                    <td class="antrenor-section">55.58</td>
+                    <td class="antrenor-section">57.78</td>
+                    <td class="antrenor-section">46.81</td>
+                    <td class="antrenor-section"><b>160.16</b></td>
+                    <td class="genel-toplam">284.97</td>
+                    <td class="reyting-section">1644</td>
+                    <td class="kombinasyon">367.17</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">6</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">EFE METE BEY</td>
+                    <td>3</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">M.KEÇECİ</td>
+                    <td class="at-section">50.03</td>
+                    <td class="at-section">45.87</td>
+                    <td class="at-section">14.29</td>
+                    <td class="at-section"><b>110.19</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">Y.DEMİRKIRAN</td>
+                    <td class="antrenor-section">52.09</td>
+                    <td class="antrenor-section">48.33</td>
+                    <td class="antrenor-section">51.44</td>
+                    <td class="antrenor-section"><b>151.87</b></td>
+                    <td class="genel-toplam">262.06</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">342.06</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">7</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 ERVANUR</td>
+                    <td>2</td>
+                    <td>60.5</td>
+                    <td style="color:#000;">O.ATMACA</td>
+                    <td class="at-section">62.43</td>
+                    <td class="at-section">56.13</td>
+                    <td class="at-section">33.33</td>
+                    <td class="at-section"><b>151.89</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">K.ŞENGEL</td>
+                    <td class="antrenor-section">41.24</td>
+                    <td class="antrenor-section">36.38</td>
+                    <td class="antrenor-section">26.59</td>
+                    <td class="antrenor-section"><b>104.21</b></td>
+                    <td class="genel-toplam">256.1</td>
+                    <td class="reyting-section">1662</td>
+                    <td class="kombinasyon">339.2</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">8</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">ŞÜKRÜ BEG</td>
+                    <td>8</td>
+                    <td>50.0</td>
+                    <td style="color:#000;">Z.KARABULUT</td>
+                    <td class="at-section">34.07</td>
+                    <td class="at-section">24.22</td>
+                    <td class="at-section">25.0</td>
+                    <td class="at-section"><b>83.29</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">B.YEŞİLYURT</td>
+                    <td class="antrenor-section">33.15</td>
+                    <td class="antrenor-section">33.72</td>
+                    <td class="antrenor-section">41.26</td>
+                    <td class="antrenor-section"><b>108.13</b></td>
+                    <td class="genel-toplam">191.42</td>
+                    <td class="reyting-section">1520</td>
+                    <td class="kombinasyon">267.42</td>
+                </tr>
+            
+            </tbody>
+        </table>
+        </div>
+        
+        <div class="durbun-section">
+            <h3>🔍 DÜRBÜNE TAKILANLAR</h3>
+            <table class="durbun-table">
+                <thead>
+                    <tr>
+                        <th>K</th>
+                        <th>POZ</th>
+                        <th>AT ADI</th>
+                        <th>YAŞ</th>
+                        <th>MESAFE</th>
+                        <th>ZAMAN</th>
+                        <th>BİR.ZAMAN</th>
+                        <th>FARK</th>
+                        <th>GANYAN</th>
+                        <th>JOKEY</th>
+                        <th>KAZANDI</th>
+                        <th>DİK.MESAFE</th>
+                    </tr>
+                </thead>
+                <tbody>
+        
+                <tr>
+                    <td>218576</td>
+                    <td>2</td>
+                    <td style="font-weight:bold;">🔴YANACAK</td>
+                    <td>-</td>
+                    <td>1300m</td>
+                    <td>1.26.44</td>
+                    <td>1.26.06</td>
+                    <td style="font-weight:bold; color:#000;">0.380</td>
+                    <td>5.85</td>
+                    <td>B.M.MIRIK</td>
+                    <td>✓ 30/08-1200m</td>
+                    <td>1200-1400</td>
+                </tr>
+            
+                <tr>
+                    <td>218752</td>
+                    <td>2</td>
+                    <td style="font-weight:bold;">🔴ERVANUR</td>
+                    <td>-</td>
+                    <td>1200m</td>
+                    <td>1.16.73</td>
+                    <td>1.16.18</td>
+                    <td style="font-weight:bold; color:#000;">0.550</td>
+                    <td>13.85</td>
+                    <td>O.YILDIZ</td>
+                    <td>✓ 19/04-1300m</td>
+                    <td>1200-1400</td>
+                </tr>
+            
+                <tr>
+                    <td>219212</td>
+                    <td>2</td>
+                    <td style="font-weight:bold;">🔴GÜL DERYA</td>
+                    <td>-</td>
+                    <td>1400m</td>
+                    <td>1.34.11</td>
+                    <td>1.34.00</td>
+                    <td style="font-weight:bold; color:#000;">0.110</td>
+                    <td>16.25</td>
+                    <td>HAK.YILDIZ</td>
+                    <td>✓ 18/07-1600m</td>
+                    <td>1200-1400</td>
+                </tr>
+            
+                <tr>
+                    <td>218954</td>
+                    <td>2</td>
+                    <td style="font-weight:bold;">🔴BOĞUŞLU</td>
+                    <td>-</td>
+                    <td>1200m</td>
+                    <td>1.22.75</td>
+                    <td>1.22.66</td>
+                    <td style="font-weight:bold; color:#000;">0.090</td>
+                    <td>14.00</td>
+                    <td>G.ÖZÇELİK</td>
+                    <td>✓ 26/02-1300m</td>
+                    <td>1200-1400</td>
+                </tr>
+            
+                <tr>
+                    <td>218789</td>
+                    <td>5</td>
+                    <td style="font-weight:bold;">🔴DURUSU BEYİ</td>
+                    <td>-</td>
+                    <td>1500m</td>
+                    <td>1.43.68</td>
+                    <td>1.42.88</td>
+                    <td style="font-weight:bold; color:#000;">0.800</td>
+                    <td>7.60</td>
+                    <td>A.YILDIZ</td>
+                    <td>✓ 06/03-1300m</td>
+                    <td>1200-1400</td>
+                </tr>
+            
+                </tbody>
+            </table>
+        </div>
+        </div>
+                <div class="race-container">
+                    <h2>🏁 2. Koşu - 2100m Sentetik</h2>
+                    <div class="race-info">
+                        <p><strong>TJK Koşu No:</strong> 219969</p>
+                        <p><strong>Koşu Şartları:</strong> ŞARTLI 3 , 3 Yaşlı İngilizler,<br><br>58 kg, <br>                    2100<br><br>Sentetik , E.İ.D. : 2.09.15</p>
+                    </div>
+                
+        <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">Sıra</th>
+                    <th rowspan="2">At</th>
+                    <th rowspan="2">No</th>
+                    <th rowspan="2">Kg</th>
+                    <th rowspan="2">Jokey</th>
+                    <th colspan="4" class="at-section">At Performansı</th>
+                    <th colspan="5" class="antrenor-section">Antrenör</th>
+                    <th rowspan="2" class="genel-toplam">Genel<br>Toplam</th>
+                    <th rowspan="2" class="reyting-section">Reyting</th>
+                    <th rowspan="2" class="kombinasyon">Final<br>Puan</th>
+                </tr>
+                <tr>
+                    <th class="at-section">Son5</th>
+                    <th class="at-section">Son3</th>
+                    <th class="at-section">Son1</th>
+                    <th class="at-section">Top</th>
+                    <th class="antrenor-section">İsim</th>
+                    <th class="antrenor-section">S20</th>
+                    <th class="antrenor-section">S10</th>
+                    <th class="antrenor-section">S5</th>
+                    <th class="antrenor-section">Top</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+                <tr class="highlight">
+                    <td><span class="sira-no birinci">1</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">EAGLE KHAN <span class='ai-trophy'>🏆1</span></td>
+                    <td>1</td>
+                    <td>61.0</td>
+                    <td style="color:#000;">M.M.BİLGİN</td>
+                    <td class="at-section">73.23</td>
+                    <td class="at-section">66.49</td>
+                    <td class="at-section">90.91</td>
+                    <td class="at-section"><b>230.63</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">Y.ÖZTAŞ</td>
+                    <td class="antrenor-section">63.79</td>
+                    <td class="antrenor-section">66.72</td>
+                    <td class="antrenor-section">68.14</td>
+                    <td class="antrenor-section"><b>198.66</b></td>
+                    <td class="genel-toplam">429.29</td>
+                    <td class="reyting-section">1716</td>
+                    <td class="kombinasyon">515.09</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ikinci">2</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 RİYAD <span class='ai-trophy'>🏆4</span></td>
+                    <td>3</td>
+                    <td>58.0</td>
+                    <td style="color:#000;">A.ÇELİK</td>
+                    <td class="at-section">46.79</td>
+                    <td class="at-section">43.13</td>
+                    <td class="at-section">72.73</td>
+                    <td class="at-section"><b>162.65</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">G.SUBAŞI</td>
+                    <td class="antrenor-section">65.71</td>
+                    <td class="antrenor-section">62.59</td>
+                    <td class="antrenor-section">69.73</td>
+                    <td class="antrenor-section"><b>198.03</b></td>
+                    <td class="genel-toplam">360.68</td>
+                    <td class="reyting-section">1583</td>
+                    <td class="kombinasyon">439.83</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ucuncu">3</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 KRİPTO <span class='ai-trophy'>🏆3</span></td>
+                    <td>8</td>
+                    <td>55.0</td>
+                    <td style="color:#000;">A.YILDIZ</td>
+                    <td class="at-section">50.18</td>
+                    <td class="at-section">50.18</td>
+                    <td class="at-section">81.82</td>
+                    <td class="at-section"><b>182.17</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">Y.DEMİRKIRAN</td>
+                    <td class="antrenor-section">52.09</td>
+                    <td class="antrenor-section">48.33</td>
+                    <td class="antrenor-section">51.44</td>
+                    <td class="antrenor-section"><b>151.87</b></td>
+                    <td class="genel-toplam">334.04</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">414.04</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">4</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">ÇİKOK ÖZKANBEY <span class='ai-trophy'>🏆2</span></td>
+                    <td>2</td>
+                    <td>54.0</td>
+                    <td style="color:#000;">M.KEÇECİ</td>
+                    <td class="at-section">56.51</td>
+                    <td class="at-section">56.51</td>
+                    <td class="at-section">42.86</td>
+                    <td class="at-section"><b>155.88</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">HÜS.KARABULUT</td>
+                    <td class="antrenor-section">41.91</td>
+                    <td class="antrenor-section">41.29</td>
+                    <td class="antrenor-section">59.57</td>
+                    <td class="antrenor-section"><b>142.78</b></td>
+                    <td class="genel-toplam">298.66</td>
+                    <td class="reyting-section">1632</td>
+                    <td class="kombinasyon">380.26</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">5</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 INDIAN SUMMER</td>
+                    <td>6</td>
+                    <td>56.0</td>
+                    <td style="color:#000;">A.SÖZEN</td>
+                    <td class="at-section">39.86</td>
+                    <td class="at-section">31.94</td>
+                    <td class="at-section">37.5</td>
+                    <td class="at-section"><b>109.3</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">S.AYDOĞAN</td>
+                    <td class="antrenor-section">55.53</td>
+                    <td class="antrenor-section">50.31</td>
+                    <td class="antrenor-section">53.33</td>
+                    <td class="antrenor-section"><b>159.17</b></td>
+                    <td class="genel-toplam">268.47</td>
+                    <td class="reyting-section">1549</td>
+                    <td class="kombinasyon">345.92</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">6</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">DOĞU ASLANI</td>
+                    <td>4</td>
+                    <td>56.0</td>
+                    <td style="color:#000;">O.ATMACA</td>
+                    <td class="at-section">38.02</td>
+                    <td class="at-section">21.06</td>
+                    <td class="at-section">18.75</td>
+                    <td class="at-section"><b>77.83</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">E.KOCA</td>
+                    <td class="antrenor-section">42.15</td>
+                    <td class="antrenor-section">48.76</td>
+                    <td class="antrenor-section">52.67</td>
+                    <td class="antrenor-section"><b>143.58</b></td>
+                    <td class="genel-toplam">221.41</td>
+                    <td class="reyting-section">1540</td>
+                    <td class="kombinasyon">298.41</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">7</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">JUNIOR STORM</td>
+                    <td>11</td>
+                    <td>55.0</td>
+                    <td style="color:#000;">A.KAÇMAZ</td>
+                    <td class="at-section">31.73</td>
+                    <td class="at-section">31.73</td>
+                    <td class="at-section">25.0</td>
+                    <td class="at-section"><b>88.46</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">S.ÇİFTÇİ</td>
+                    <td class="antrenor-section">40.01</td>
+                    <td class="antrenor-section">44.05</td>
+                    <td class="antrenor-section">37.3</td>
+                    <td class="antrenor-section"><b>121.36</b></td>
+                    <td class="genel-toplam">209.82</td>
+                    <td class="reyting-section">1508</td>
+                    <td class="kombinasyon">285.22</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">8</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">OKYANUS İNCİSİ</td>
+                    <td>9</td>
+                    <td>54.5</td>
+                    <td style="color:#000;">G.ÖZÇELİK</td>
+                    <td class="at-section">7.69</td>
+                    <td class="at-section">7.69</td>
+                    <td class="at-section">7.69</td>
+                    <td class="at-section"><b>23.07</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">H.ACAR</td>
+                    <td class="antrenor-section">43.2</td>
+                    <td class="antrenor-section">51.75</td>
+                    <td class="antrenor-section">55.16</td>
+                    <td class="antrenor-section"><b>150.11</b></td>
+                    <td class="genel-toplam">173.18</td>
+                    <td class="reyting-section">1388</td>
+                    <td class="kombinasyon">242.58</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">9</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">BELLINZONA</td>
+                    <td>7</td>
+                    <td>52.0</td>
+                    <td style="color:#000;">Z.KARABULUT</td>
+                    <td class="at-section">13.63</td>
+                    <td class="at-section">8.65</td>
+                    <td class="at-section">7.69</td>
+                    <td class="at-section"><b>29.96</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">V.YÜKSEL</td>
+                    <td class="antrenor-section">46.39</td>
+                    <td class="antrenor-section">45.19</td>
+                    <td class="antrenor-section">40.88</td>
+                    <td class="antrenor-section"><b>132.46</b></td>
+                    <td class="genel-toplam">162.43</td>
+                    <td class="reyting-section">1418</td>
+                    <td class="kombinasyon">233.33</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">10</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">LEWISBURG</td>
+                    <td>10</td>
+                    <td>55.0</td>
+                    <td style="color:#000;">K.GÖKÇE</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">Y.DEMİRKIRAN</td>
+                    <td class="antrenor-section">52.09</td>
+                    <td class="antrenor-section">48.33</td>
+                    <td class="antrenor-section">51.44</td>
+                    <td class="antrenor-section"><b>151.87</b></td>
+                    <td class="genel-toplam">151.87</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">231.87</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">11</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">HANDAN</td>
+                    <td>5</td>
+                    <td>54.0</td>
+                    <td style="color:#000;">E.BOZDAĞ</td>
+                    <td class="at-section">19.09</td>
+                    <td class="at-section">12.26</td>
+                    <td class="at-section">12.5</td>
+                    <td class="at-section"><b>43.85</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">HAK.EL</td>
+                    <td class="antrenor-section">25.39</td>
+                    <td class="antrenor-section">20.08</td>
+                    <td class="antrenor-section">18.28</td>
+                    <td class="antrenor-section"><b>63.75</b></td>
+                    <td class="genel-toplam">107.6</td>
+                    <td class="reyting-section">1445</td>
+                    <td class="kombinasyon">179.85</td>
+                </tr>
+            
+            </tbody>
+        </table>
+        </div>
+        
+        <div class="durbun-section">
+            <h3>🔍 DÜRBÜNE TAKILANLAR</h3>
+            <table class="durbun-table">
+                <thead>
+                    <tr>
+                        <th>K</th>
+                        <th>POZ</th>
+                        <th>AT ADI</th>
+                        <th>YAŞ</th>
+                        <th>MESAFE</th>
+                        <th>ZAMAN</th>
+                        <th>BİR.ZAMAN</th>
+                        <th>FARK</th>
+                        <th>GANYAN</th>
+                        <th>JOKEY</th>
+                        <th>KAZANDI</th>
+                        <th>DİK.MESAFE</th>
+                    </tr>
+                </thead>
+                <tbody>
+        
+                <tr>
+                    <td>219750</td>
+                    <td>3</td>
+                    <td style="font-weight:bold;">RİYAD</td>
+                    <td>-</td>
+                    <td>2100m</td>
+                    <td>2.12.45</td>
+                    <td>2.12.36</td>
+                    <td style="font-weight:bold; color:#000;">0.090</td>
+                    <td>11.05</td>
+                    <td>A.ASLAN</td>
+                    <td></td>
+                    <td>1900-2300</td>
+                </tr>
+            
+                <tr>
+                    <td>219253</td>
+                    <td>6</td>
+                    <td style="font-weight:bold;">🔴INDIAN SUMMER</td>
+                    <td>-</td>
+                    <td>1900m</td>
+                    <td>1.58.35</td>
+                    <td>1.57.44</td>
+                    <td style="font-weight:bold; color:#000;">0.910</td>
+                    <td>13.10</td>
+                    <td>E.AKTUĞ</td>
+                    <td>✓ 20/04-1600m</td>
+                    <td>1900-2300</td>
+                </tr>
+            
+                <tr>
+                    <td>219750</td>
+                    <td>2</td>
+                    <td style="font-weight:bold;">KRİPTO</td>
+                    <td>-</td>
+                    <td>2100m</td>
+                    <td>2.12.39</td>
+                    <td>2.12.36</td>
+                    <td style="font-weight:bold; color:#000;">0.030</td>
+                    <td>67.80</td>
+                    <td>A.MEH.ALTINAPApranti</td>
+                    <td></td>
+                    <td>1900-2300</td>
+                </tr>
+            
+                </tbody>
+            </table>
+        </div>
+        </div>
+                <div class="race-container">
+                    <h2>🏁 3. Koşu - 1200m Çim</h2>
+                    <div class="race-info">
+                        <p><strong>TJK Koşu No:</strong> 219967</p>
+                        <p><strong>Koşu Şartları:</strong> SATIŞ 3 , 2 Yaşlı İngilizler,<br><br>57 kg, <br>                    1200<br><br>Çim , E.İ.D. : 1.08.52</p>
+                    </div>
+                
+        <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">Sıra</th>
+                    <th rowspan="2">At</th>
+                    <th rowspan="2">No</th>
+                    <th rowspan="2">Kg</th>
+                    <th rowspan="2">Jokey</th>
+                    <th colspan="4" class="at-section">At Performansı</th>
+                    <th colspan="5" class="antrenor-section">Antrenör</th>
+                    <th rowspan="2" class="genel-toplam">Genel<br>Toplam</th>
+                    <th rowspan="2" class="reyting-section">Reyting</th>
+                    <th rowspan="2" class="kombinasyon">Final<br>Puan</th>
+                </tr>
+                <tr>
+                    <th class="at-section">Son5</th>
+                    <th class="at-section">Son3</th>
+                    <th class="at-section">Son1</th>
+                    <th class="at-section">Top</th>
+                    <th class="antrenor-section">İsim</th>
+                    <th class="antrenor-section">S20</th>
+                    <th class="antrenor-section">S10</th>
+                    <th class="antrenor-section">S5</th>
+                    <th class="antrenor-section">Top</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+                <tr class="highlight">
+                    <td><span class="sira-no birinci">1</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 KUBAT KASIRGASI <span class='ai-trophy'>🏆1</span></td>
+                    <td>1</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">V.ABİŞ</td>
+                    <td class="at-section">63.24</td>
+                    <td class="at-section">61.59</td>
+                    <td class="at-section">71.43</td>
+                    <td class="at-section"><b>196.25</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">AR.KILIÇ</td>
+                    <td class="antrenor-section">51.13</td>
+                    <td class="antrenor-section">47.65</td>
+                    <td class="antrenor-section">49.99</td>
+                    <td class="antrenor-section"><b>148.76</b></td>
+                    <td class="genel-toplam">345.02</td>
+                    <td class="reyting-section">1666</td>
+                    <td class="kombinasyon">428.32</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ikinci">2</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">JASMINE SCENT <span class='ai-trophy'>🏆2</span></td>
+                    <td>2</td>
+                    <td>55.0</td>
+                    <td style="color:#000;">G.KOCAKAYA</td>
+                    <td class="at-section">47.69</td>
+                    <td class="at-section">54.72</td>
+                    <td class="at-section">87.5</td>
+                    <td class="at-section"><b>189.92</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">G.ŞİMŞEK</td>
+                    <td class="antrenor-section">48.57</td>
+                    <td class="antrenor-section">46.5</td>
+                    <td class="antrenor-section">61.26</td>
+                    <td class="antrenor-section"><b>156.34</b></td>
+                    <td class="genel-toplam">346.25</td>
+                    <td class="reyting-section">1588</td>
+                    <td class="kombinasyon">425.65</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ucuncu">3</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">HUAYRA <span class='ai-trophy'>🏆4</span></td>
+                    <td>5</td>
+                    <td>50.0</td>
+                    <td style="color:#000;">HAK.YILDIZ</td>
+                    <td class="at-section">41.43</td>
+                    <td class="at-section">47.62</td>
+                    <td class="at-section">60.0</td>
+                    <td class="at-section"><b>149.05</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">C.KATI</td>
+                    <td class="antrenor-section">58.2</td>
+                    <td class="antrenor-section">58.98</td>
+                    <td class="antrenor-section">61.4</td>
+                    <td class="antrenor-section"><b>178.57</b></td>
+                    <td class="genel-toplam">327.62</td>
+                    <td class="reyting-section">1557</td>
+                    <td class="kombinasyon">405.47</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">4</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">QUİEREME <span class='ai-trophy'>🏆3</span></td>
+                    <td>6</td>
+                    <td>50.0</td>
+                    <td style="color:#000;">Y.GÖKÇE</td>
+                    <td class="at-section">40.55</td>
+                    <td class="at-section">31.48</td>
+                    <td class="at-section">44.44</td>
+                    <td class="at-section"><b>116.47</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">C.KATI</td>
+                    <td class="antrenor-section">58.2</td>
+                    <td class="antrenor-section">58.98</td>
+                    <td class="antrenor-section">61.4</td>
+                    <td class="antrenor-section"><b>178.57</b></td>
+                    <td class="genel-toplam">295.05</td>
+                    <td class="reyting-section">1552</td>
+                    <td class="kombinasyon">372.65</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">5</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 LA COPA</td>
+                    <td>3</td>
+                    <td>55.0</td>
+                    <td style="color:#000;">A.YILDIZ</td>
+                    <td class="at-section">25.83</td>
+                    <td class="at-section">28.89</td>
+                    <td class="at-section">33.33</td>
+                    <td class="at-section"><b>88.05</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">C.KATI</td>
+                    <td class="antrenor-section">58.2</td>
+                    <td class="antrenor-section">58.98</td>
+                    <td class="antrenor-section">61.4</td>
+                    <td class="antrenor-section"><b>178.57</b></td>
+                    <td class="genel-toplam">266.62</td>
+                    <td class="reyting-section">1479</td>
+                    <td class="kombinasyon">340.57</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">6</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">LITTLE CHIRAL</td>
+                    <td>4</td>
+                    <td>55.0</td>
+                    <td style="color:#000;">U.LEVENT</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">FERH.ALTIN</td>
+                    <td class="antrenor-section">58.12</td>
+                    <td class="antrenor-section">57.88</td>
+                    <td class="antrenor-section">61.28</td>
+                    <td class="antrenor-section"><b>177.29</b></td>
+                    <td class="genel-toplam">177.29</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">257.29</td>
+                </tr>
+            
+            </tbody>
+        </table>
+        </div>
+        
+        <div class="durbun-section">
+            <h3>🔍 DÜRBÜNE TAKILANLAR</h3>
+            <table class="durbun-table">
+                <thead>
+                    <tr>
+                        <th>K</th>
+                        <th>POZ</th>
+                        <th>AT ADI</th>
+                        <th>YAŞ</th>
+                        <th>MESAFE</th>
+                        <th>ZAMAN</th>
+                        <th>BİR.ZAMAN</th>
+                        <th>FARK</th>
+                        <th>GANYAN</th>
+                        <th>JOKEY</th>
+                        <th>KAZANDI</th>
+                        <th>DİK.MESAFE</th>
+                    </tr>
+                </thead>
+                <tbody>
+        
+                <tr>
+                    <td>219609</td>
+                    <td>2</td>
+                    <td style="font-weight:bold;">🔴KUBAT KASIRGASI</td>
+                    <td>-</td>
+                    <td>1200m</td>
+                    <td>1.12.36</td>
+                    <td>1.12.27</td>
+                    <td style="font-weight:bold; color:#000;">0.090</td>
+                    <td>9.95</td>
+                    <td>İ.AKYAVUZ</td>
+                    <td>✓ 26/04-1000m</td>
+                    <td>1200-1400</td>
+                </tr>
+            
+                <tr>
+                    <td>219619</td>
+                    <td>4</td>
+                    <td style="font-weight:bold;">🔴LA COPA</td>
+                    <td>-</td>
+                    <td>1300m</td>
+                    <td>1.18.29</td>
+                    <td>1.17.37</td>
+                    <td style="font-weight:bold; color:#000;">0.920</td>
+                    <td>7.80</td>
+                    <td>M.AKYAVUZ</td>
+                    <td>✓ 21/06-1200m</td>
+                    <td>1200-1400</td>
+                </tr>
+            
+                </tbody>
+            </table>
+        </div>
+        </div>
+                <div class="race-container">
+                    <h2>🏁 4. Koşu - 1200m Çim</h2>
+                    <div class="race-info">
+                        <p><strong>TJK Koşu No:</strong> 219964</p>
+                        <p><strong>Koşu Şartları:</strong> ŞARTLI 1/DHÖW/Dişi , 3 Yaşlı Araplar,<br><br>57 kg, <br>                    1200<br><br>Çim , E.İ.D. : 1.16.50</p>
+                    </div>
+                
+        <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">Sıra</th>
+                    <th rowspan="2">At</th>
+                    <th rowspan="2">No</th>
+                    <th rowspan="2">Kg</th>
+                    <th rowspan="2">Jokey</th>
+                    <th colspan="4" class="at-section">At Performansı</th>
+                    <th colspan="5" class="antrenor-section">Antrenör</th>
+                    <th rowspan="2" class="genel-toplam">Genel<br>Toplam</th>
+                    <th rowspan="2" class="reyting-section">Reyting</th>
+                    <th rowspan="2" class="kombinasyon">Final<br>Puan</th>
+                </tr>
+                <tr>
+                    <th class="at-section">Son5</th>
+                    <th class="at-section">Son3</th>
+                    <th class="at-section">Son1</th>
+                    <th class="at-section">Top</th>
+                    <th class="antrenor-section">İsim</th>
+                    <th class="antrenor-section">S20</th>
+                    <th class="antrenor-section">S10</th>
+                    <th class="antrenor-section">S5</th>
+                    <th class="antrenor-section">Top</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+                <tr class="highlight">
+                    <td><span class="sira-no birinci">1</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">PAKSİ</td>
+                    <td>8</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">B.KILINÇ</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">O.ÖZEL</td>
+                    <td class="antrenor-section">63.95</td>
+                    <td class="antrenor-section">71.89</td>
+                    <td class="antrenor-section">70.69</td>
+                    <td class="antrenor-section"><b>206.53</b></td>
+                    <td class="genel-toplam">206.53</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">286.53</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ikinci">2</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">BİRSOY</td>
+                    <td>4</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">M.KEÇECİ</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">A.A.ZÜMBÜLLER</td>
+                    <td class="antrenor-section">63.95</td>
+                    <td class="antrenor-section">63.05</td>
+                    <td class="antrenor-section">53.54</td>
+                    <td class="antrenor-section"><b>180.53</b></td>
+                    <td class="genel-toplam">180.53</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">260.53</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ucuncu">3</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">STARCAN</td>
+                    <td>12</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">M.M.BİLGİN</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">M.E.AVCI</td>
+                    <td class="antrenor-section">61.85</td>
+                    <td class="antrenor-section">57.8</td>
+                    <td class="antrenor-section">57.92</td>
+                    <td class="antrenor-section"><b>177.56</b></td>
+                    <td class="genel-toplam">177.56</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">257.56</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">4</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">ŞUARYA</td>
+                    <td>13</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">A.ÇELİK</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">S.MUTLU</td>
+                    <td class="antrenor-section">58.04</td>
+                    <td class="antrenor-section">60.28</td>
+                    <td class="antrenor-section">52.04</td>
+                    <td class="antrenor-section"><b>170.35</b></td>
+                    <td class="genel-toplam">170.35</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">250.35</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">5</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">HIZLI HÜMA</td>
+                    <td>5</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">E.AKTUĞ</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">N.KAYA</td>
+                    <td class="antrenor-section">50.1</td>
+                    <td class="antrenor-section">56.96</td>
+                    <td class="antrenor-section">60.89</td>
+                    <td class="antrenor-section"><b>167.95</b></td>
+                    <td class="genel-toplam">167.95</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">247.95</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">6</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">İMREN HANIM</td>
+                    <td>6</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">S.ÖZEN</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">N.KAYA</td>
+                    <td class="antrenor-section">50.1</td>
+                    <td class="antrenor-section">56.96</td>
+                    <td class="antrenor-section">60.89</td>
+                    <td class="antrenor-section"><b>167.95</b></td>
+                    <td class="genel-toplam">167.95</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">247.95</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">7</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">SEÇİLKIZ</td>
+                    <td>10</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">A.KURŞUN
+
+
+AYHAN KURŞUN     raporlu olduğundan yarışta at binemeyecektir.</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">N.KAYA</td>
+                    <td class="antrenor-section">50.1</td>
+                    <td class="antrenor-section">56.96</td>
+                    <td class="antrenor-section">60.89</td>
+                    <td class="antrenor-section"><b>167.95</b></td>
+                    <td class="genel-toplam">167.95</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">247.95</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">8</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">PELŞİN</td>
+                    <td>9</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">SAL.ÇELİK</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">F.DEMİR</td>
+                    <td class="antrenor-section">42.41</td>
+                    <td class="antrenor-section">53.01</td>
+                    <td class="antrenor-section">66.01</td>
+                    <td class="antrenor-section"><b>161.43</b></td>
+                    <td class="genel-toplam">161.43</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">241.43</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">9</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">SELDA HATUN</td>
+                    <td>11</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">H.ÇİZİK</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">A.KARATOPRAK</td>
+                    <td class="antrenor-section">50.97</td>
+                    <td class="antrenor-section">53.26</td>
+                    <td class="antrenor-section">50.83</td>
+                    <td class="antrenor-section"><b>155.06</b></td>
+                    <td class="genel-toplam">155.06</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">235.06</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">10</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">MATİLDA HANIM</td>
+                    <td>7</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">G.ÖZÇELİK</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">T.KURT</td>
+                    <td class="antrenor-section">47.49</td>
+                    <td class="antrenor-section">43.88</td>
+                    <td class="antrenor-section">42.95</td>
+                    <td class="antrenor-section"><b>134.32</b></td>
+                    <td class="genel-toplam">134.32</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">214.32</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">11</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">AYCASA</td>
+                    <td>2</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">A.SÖZEN</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">MUR.AKKILIÇ</td>
+                    <td class="antrenor-section">47.84</td>
+                    <td class="antrenor-section">48.42</td>
+                    <td class="antrenor-section">30.59</td>
+                    <td class="antrenor-section"><b>126.86</b></td>
+                    <td class="genel-toplam">126.86</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">206.86</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">12</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">ALEMARA</td>
+                    <td>1</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">Y.Ş.GÜMÜŞ</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">M.ALTIN</td>
+                    <td class="antrenor-section">38.66</td>
+                    <td class="antrenor-section">38.3</td>
+                    <td class="antrenor-section">29.9</td>
+                    <td class="antrenor-section"><b>106.86</b></td>
+                    <td class="genel-toplam">106.86</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">186.86</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">13</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">BİBA KIZ</td>
+                    <td>3</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">O.GÖKÇE</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">E.ÇALIK</td>
+                    <td class="antrenor-section">0</td>
+                    <td class="antrenor-section">0</td>
+                    <td class="antrenor-section">0</td>
+                    <td class="antrenor-section"><b>0</b></td>
+                    <td class="genel-toplam">0</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">80.0</td>
+                </tr>
+            
+            </tbody>
+        </table>
+        </div>
+        </div>
+                <div class="race-container">
+                    <h2>🏁 5. Koşu - 1300m Çim</h2>
+                    <div class="race-info">
+                        <p><strong>TJK Koşu No:</strong> 219971</p>
+                        <p><strong>Koşu Şartları:</strong> Handikap 16 /H1 , 3 ve Yukarı İngilizler,<br><br><br>                    1300<br><br>Çim , E.İ.D. : 1.15.79</p>
+                    </div>
+                
+        <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">Sıra</th>
+                    <th rowspan="2">At</th>
+                    <th rowspan="2">No</th>
+                    <th rowspan="2">Kg</th>
+                    <th rowspan="2">Jokey</th>
+                    <th colspan="4" class="at-section">At Performansı</th>
+                    <th colspan="5" class="antrenor-section">Antrenör</th>
+                    <th rowspan="2" class="genel-toplam">Genel<br>Toplam</th>
+                    <th rowspan="2" class="reyting-section">Reyting</th>
+                    <th rowspan="2" class="kombinasyon">Final<br>Puan</th>
+                </tr>
+                <tr>
+                    <th class="at-section">Son5</th>
+                    <th class="at-section">Son3</th>
+                    <th class="at-section">Son1</th>
+                    <th class="at-section">Top</th>
+                    <th class="antrenor-section">İsim</th>
+                    <th class="antrenor-section">S20</th>
+                    <th class="antrenor-section">S10</th>
+                    <th class="antrenor-section">S5</th>
+                    <th class="antrenor-section">Top</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+                <tr class="highlight">
+                    <td><span class="sira-no birinci">1</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 DAYWATCH <span class='ai-trophy'>🏆3</span></td>
+                    <td>6</td>
+                    <td>58.0</td>
+                    <td style="color:#000;">A.ÇELİK</td>
+                    <td class="at-section">61.42</td>
+                    <td class="at-section">74.71</td>
+                    <td class="at-section">69.23</td>
+                    <td class="at-section"><b>205.36</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">G.SUBAŞI</td>
+                    <td class="antrenor-section">65.71</td>
+                    <td class="antrenor-section">62.59</td>
+                    <td class="antrenor-section">69.73</td>
+                    <td class="antrenor-section"><b>198.03</b></td>
+                    <td class="genel-toplam">403.39</td>
+                    <td class="reyting-section">1657</td>
+                    <td class="kombinasyon">486.24</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ikinci">2</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 GRAVITY OF LOVE <span class='ai-trophy'>🏆2</span></td>
+                    <td>3</td>
+                    <td>58.5</td>
+                    <td style="color:#000;">M.KEÇECİ</td>
+                    <td class="at-section">67.17</td>
+                    <td class="at-section">74.75</td>
+                    <td class="at-section">66.67</td>
+                    <td class="at-section"><b>208.59</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">İ.CANPOLAT</td>
+                    <td class="antrenor-section">56.03</td>
+                    <td class="antrenor-section">47.05</td>
+                    <td class="antrenor-section">63.74</td>
+                    <td class="antrenor-section"><b>166.81</b></td>
+                    <td class="genel-toplam">375.4</td>
+                    <td class="reyting-section">1685</td>
+                    <td class="kombinasyon">459.65</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ucuncu">3</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">BERHUDAR <span class='ai-trophy'>🏆1</span></td>
+                    <td>9</td>
+                    <td>50.5</td>
+                    <td style="color:#000;">A.KAÇMAZ</td>
+                    <td class="at-section">67.22</td>
+                    <td class="at-section">63.33</td>
+                    <td class="at-section">33.33</td>
+                    <td class="at-section"><b>163.89</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">KAD.BALTACI</td>
+                    <td class="antrenor-section">56.3</td>
+                    <td class="antrenor-section">58.13</td>
+                    <td class="antrenor-section">52.84</td>
+                    <td class="antrenor-section"><b>167.27</b></td>
+                    <td class="genel-toplam">331.16</td>
+                    <td class="reyting-section">1686</td>
+                    <td class="kombinasyon">415.46</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">4</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">FRECCIA</td>
+                    <td>8</td>
+                    <td>51.5</td>
+                    <td style="color:#000;">A.ASLAN</td>
+                    <td class="at-section">46.82</td>
+                    <td class="at-section">42.33</td>
+                    <td class="at-section">71.43</td>
+                    <td class="at-section"><b>160.58</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">ENG.ALTIN</td>
+                    <td class="antrenor-section">49.87</td>
+                    <td class="antrenor-section">44.97</td>
+                    <td class="antrenor-section">55.96</td>
+                    <td class="antrenor-section"><b>150.8</b></td>
+                    <td class="genel-toplam">311.38</td>
+                    <td class="reyting-section">1584</td>
+                    <td class="kombinasyon">390.58</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">5</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">PRİNCESA ADA</td>
+                    <td>1</td>
+                    <td>60.5</td>
+                    <td style="color:#000;">M.M.BİLGİN</td>
+                    <td class="at-section">49.93</td>
+                    <td class="at-section">53.24</td>
+                    <td class="at-section">12.5</td>
+                    <td class="at-section"><b>115.68</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">C.KATI</td>
+                    <td class="antrenor-section">58.2</td>
+                    <td class="antrenor-section">58.98</td>
+                    <td class="antrenor-section">61.4</td>
+                    <td class="antrenor-section"><b>178.57</b></td>
+                    <td class="genel-toplam">294.25</td>
+                    <td class="reyting-section">1599</td>
+                    <td class="kombinasyon">374.2</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">6</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">SARMAT <span class='ai-trophy'>🏆4</span></td>
+                    <td>4</td>
+                    <td>58.0</td>
+                    <td style="color:#000;">E.ÇANKAYA</td>
+                    <td class="at-section">51.85</td>
+                    <td class="at-section">42.47</td>
+                    <td class="at-section">22.22</td>
+                    <td class="at-section"><b>116.55</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">B.ŞANDAN</td>
+                    <td class="antrenor-section">49.29</td>
+                    <td class="antrenor-section">40.48</td>
+                    <td class="antrenor-section">43.93</td>
+                    <td class="antrenor-section"><b>133.7</b></td>
+                    <td class="genel-toplam">250.25</td>
+                    <td class="reyting-section">1609</td>
+                    <td class="kombinasyon">330.7</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">7</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">VELOX</td>
+                    <td>5</td>
+                    <td>61.0</td>
+                    <td style="color:#000;">A.YILDIZ</td>
+                    <td class="at-section">41.26</td>
+                    <td class="at-section">41.26</td>
+                    <td class="at-section">8.33</td>
+                    <td class="at-section"><b>90.85</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">MİR.İPEK</td>
+                    <td class="antrenor-section">39.98</td>
+                    <td class="antrenor-section">34.4</td>
+                    <td class="antrenor-section">47.3</td>
+                    <td class="antrenor-section"><b>121.68</b></td>
+                    <td class="genel-toplam">212.53</td>
+                    <td class="reyting-section">1556</td>
+                    <td class="kombinasyon">290.33</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">8</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">FILIUS VENTUS</td>
+                    <td>7</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">G.ÖZÇELİK</td>
+                    <td class="at-section">34.83</td>
+                    <td class="at-section">29.35</td>
+                    <td class="at-section">20.0</td>
+                    <td class="at-section"><b>84.19</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">MİR.İPEK</td>
+                    <td class="antrenor-section">39.98</td>
+                    <td class="antrenor-section">34.4</td>
+                    <td class="antrenor-section">47.3</td>
+                    <td class="antrenor-section"><b>121.68</b></td>
+                    <td class="genel-toplam">205.87</td>
+                    <td class="reyting-section">1524</td>
+                    <td class="kombinasyon">282.07</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">9</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">SON ELÇİ</td>
+                    <td>2</td>
+                    <td>61.0</td>
+                    <td style="color:#000;">BERK.GÖKÇE</td>
+                    <td class="at-section">20.37</td>
+                    <td class="at-section">20.37</td>
+                    <td class="at-section">-0.0</td>
+                    <td class="at-section"><b>40.74</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">M.ACAR</td>
+                    <td class="antrenor-section">37.66</td>
+                    <td class="antrenor-section">36.21</td>
+                    <td class="antrenor-section">32.57</td>
+                    <td class="antrenor-section"><b>106.44</b></td>
+                    <td class="genel-toplam">147.18</td>
+                    <td class="reyting-section">1451</td>
+                    <td class="kombinasyon">219.73</td>
+                </tr>
+            
+            </tbody>
+        </table>
+        </div>
+        
+        <div class="durbun-section">
+            <h3>🔍 DÜRBÜNE TAKILANLAR</h3>
+            <table class="durbun-table">
+                <thead>
+                    <tr>
+                        <th>K</th>
+                        <th>POZ</th>
+                        <th>AT ADI</th>
+                        <th>YAŞ</th>
+                        <th>MESAFE</th>
+                        <th>ZAMAN</th>
+                        <th>BİR.ZAMAN</th>
+                        <th>FARK</th>
+                        <th>GANYAN</th>
+                        <th>JOKEY</th>
+                        <th>KAZANDI</th>
+                        <th>DİK.MESAFE</th>
+                    </tr>
+                </thead>
+                <tbody>
+        
+                <tr>
+                    <td>219558</td>
+                    <td>3</td>
+                    <td style="font-weight:bold;">🔴GRAVITY OF LOVE</td>
+                    <td>-</td>
+                    <td>1400m</td>
+                    <td>1.22.75</td>
+                    <td>1.22.23</td>
+                    <td style="font-weight:bold; color:#000;">0.520</td>
+                    <td>11.95</td>
+                    <td>A.MEH.ALTINAPApranti</td>
+                    <td>✓ 22/08-1400m</td>
+                    <td>1100-1500</td>
+                </tr>
+            
+                <tr>
+                    <td>218928</td>
+                    <td>3</td>
+                    <td style="font-weight:bold;">🔴DAYWATCH</td>
+                    <td>-</td>
+                    <td>1400m</td>
+                    <td>1.24.33</td>
+                    <td>1.24.02</td>
+                    <td style="font-weight:bold; color:#000;">0.310</td>
+                    <td>32.20</td>
+                    <td>GÖK.BEKTAŞ</td>
+                    <td>✓ 23/10-1400m</td>
+                    <td>1100-1500</td>
+                </tr>
+            
+                </tbody>
+            </table>
+        </div>
+        </div>
+                <div class="race-container">
+                    <h2>🏁 6. Koşu - 1500m Sentetik</h2>
+                    <div class="race-info">
+                        <p><strong>TJK Koşu No:</strong> 219973</p>
+                        <p><strong>Koşu Şartları:</strong> G 2/DHT , 3 Yaşlı Araplar,<br><br>57 kg, <br>                    1500<br><br>Sentetik , E.İ.D. : 1.37.40</p>
+                    </div>
+                
+        <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">Sıra</th>
+                    <th rowspan="2">At</th>
+                    <th rowspan="2">No</th>
+                    <th rowspan="2">Kg</th>
+                    <th rowspan="2">Jokey</th>
+                    <th colspan="4" class="at-section">At Performansı</th>
+                    <th colspan="5" class="antrenor-section">Antrenör</th>
+                    <th rowspan="2" class="genel-toplam">Genel<br>Toplam</th>
+                    <th rowspan="2" class="reyting-section">Reyting</th>
+                    <th rowspan="2" class="kombinasyon">Final<br>Puan</th>
+                </tr>
+                <tr>
+                    <th class="at-section">Son5</th>
+                    <th class="at-section">Son3</th>
+                    <th class="at-section">Son1</th>
+                    <th class="at-section">Top</th>
+                    <th class="antrenor-section">İsim</th>
+                    <th class="antrenor-section">S20</th>
+                    <th class="antrenor-section">S10</th>
+                    <th class="antrenor-section">S5</th>
+                    <th class="antrenor-section">Top</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+                <tr class="highlight">
+                    <td><span class="sira-no birinci">1</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 ÖZMEN BEY <span class='ai-trophy'>🏆2</span></td>
+                    <td>9</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">S.KAYA</td>
+                    <td class="at-section">85.58</td>
+                    <td class="at-section">83.33</td>
+                    <td class="at-section">91.67</td>
+                    <td class="at-section"><b>260.58</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">Ü.ARSLAN</td>
+                    <td class="antrenor-section">61.24</td>
+                    <td class="antrenor-section">55.98</td>
+                    <td class="antrenor-section">47.64</td>
+                    <td class="antrenor-section"><b>164.86</b></td>
+                    <td class="genel-toplam">425.44</td>
+                    <td class="reyting-section">1777</td>
+                    <td class="kombinasyon">514.29</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ikinci">2</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 GÖKIRMAK</td>
+                    <td>6</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">A.ÇELİK</td>
+                    <td class="at-section">54.86</td>
+                    <td class="at-section">69.6</td>
+                    <td class="at-section">81.82</td>
+                    <td class="at-section"><b>206.28</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">O.ÖZEL</td>
+                    <td class="antrenor-section">63.95</td>
+                    <td class="antrenor-section">71.89</td>
+                    <td class="antrenor-section">70.69</td>
+                    <td class="antrenor-section"><b>206.53</b></td>
+                    <td class="genel-toplam">412.81</td>
+                    <td class="reyting-section">1624</td>
+                    <td class="kombinasyon">494.01</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ucuncu">3</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">CEVAHİRKAN <span class='ai-trophy'>🏆1</span></td>
+                    <td>2</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">E.ÇANKAYA</td>
+                    <td class="at-section">72.22</td>
+                    <td class="at-section">64.43</td>
+                    <td class="at-section">90.91</td>
+                    <td class="at-section"><b>227.56</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">C.KATI</td>
+                    <td class="antrenor-section">58.2</td>
+                    <td class="antrenor-section">58.98</td>
+                    <td class="antrenor-section">61.4</td>
+                    <td class="antrenor-section"><b>178.57</b></td>
+                    <td class="genel-toplam">406.14</td>
+                    <td class="reyting-section">1711</td>
+                    <td class="kombinasyon">491.69</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">4</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">TAHSİN SEFA</td>
+                    <td>11</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">M.M.BİLGİN</td>
+                    <td class="at-section">61.21</td>
+                    <td class="at-section">85.35</td>
+                    <td class="at-section">90.91</td>
+                    <td class="at-section"><b>237.48</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">M.KAYA</td>
+                    <td class="antrenor-section">47.84</td>
+                    <td class="antrenor-section">54.36</td>
+                    <td class="antrenor-section">64.56</td>
+                    <td class="antrenor-section"><b>166.76</b></td>
+                    <td class="genel-toplam">404.24</td>
+                    <td class="reyting-section">1656</td>
+                    <td class="kombinasyon">487.04</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">5</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 YELBOZAN <span class='ai-trophy'>🏆3</span></td>
+                    <td>13</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">H.ÇİZİK</td>
+                    <td class="at-section">75.24</td>
+                    <td class="at-section">74.29</td>
+                    <td class="at-section">75.0</td>
+                    <td class="at-section"><b>224.54</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">Ü.ARSLAN</td>
+                    <td class="antrenor-section">61.24</td>
+                    <td class="antrenor-section">55.98</td>
+                    <td class="antrenor-section">47.64</td>
+                    <td class="antrenor-section"><b>164.86</b></td>
+                    <td class="genel-toplam">389.39</td>
+                    <td class="reyting-section">1726</td>
+                    <td class="kombinasyon">475.69</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">6</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">HIZLI SİNAN</td>
+                    <td>7</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">A.KURŞUN
+
+
+AYHAN KURŞUN     raporlu olduğundan yarışta at binemeyecektir.</td>
+                    <td class="at-section">66.52</td>
+                    <td class="at-section">69.64</td>
+                    <td class="at-section">87.5</td>
+                    <td class="at-section"><b>223.66</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">H.YÜZBAŞI</td>
+                    <td class="antrenor-section">51.86</td>
+                    <td class="antrenor-section">51.67</td>
+                    <td class="antrenor-section">61.98</td>
+                    <td class="antrenor-section"><b>165.51</b></td>
+                    <td class="genel-toplam">389.17</td>
+                    <td class="reyting-section">1682</td>
+                    <td class="kombinasyon">473.27</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">7</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 BAY MIRIK <span class='ai-trophy'>🏆4</span></td>
+                    <td>1</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">M.KAYA</td>
+                    <td class="at-section">74.44</td>
+                    <td class="at-section">80.02</td>
+                    <td class="at-section">66.67</td>
+                    <td class="at-section"><b>221.13</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">V.KARAKUŞ</td>
+                    <td class="antrenor-section">49.44</td>
+                    <td class="antrenor-section">48.07</td>
+                    <td class="antrenor-section">56.91</td>
+                    <td class="antrenor-section"><b>154.42</b></td>
+                    <td class="genel-toplam">375.55</td>
+                    <td class="reyting-section">1722</td>
+                    <td class="kombinasyon">461.65</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">8</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 KAYIPSIZ</td>
+                    <td>8</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">G.KOCAKAYA</td>
+                    <td class="at-section">68.32</td>
+                    <td class="at-section">67.13</td>
+                    <td class="at-section">87.5</td>
+                    <td class="at-section"><b>222.95</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">MİR.İPEK</td>
+                    <td class="antrenor-section">39.98</td>
+                    <td class="antrenor-section">34.4</td>
+                    <td class="antrenor-section">47.3</td>
+                    <td class="antrenor-section"><b>121.68</b></td>
+                    <td class="genel-toplam">344.64</td>
+                    <td class="reyting-section">1691</td>
+                    <td class="kombinasyon">429.19</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">9</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 FERMAN YAZAR</td>
+                    <td>5</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">V.ABİŞ</td>
+                    <td class="at-section">44.79</td>
+                    <td class="at-section">48.82</td>
+                    <td class="at-section">90.91</td>
+                    <td class="at-section"><b>184.52</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">V.TURAN</td>
+                    <td class="antrenor-section">50.81</td>
+                    <td class="antrenor-section">46.48</td>
+                    <td class="antrenor-section">54.78</td>
+                    <td class="antrenor-section"><b>152.07</b></td>
+                    <td class="genel-toplam">336.59</td>
+                    <td class="reyting-section">1573</td>
+                    <td class="kombinasyon">415.24</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">10</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 DADAŞ ACAR</td>
+                    <td>3</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">MÜS.ÇELİK</td>
+                    <td class="at-section">48.73</td>
+                    <td class="at-section">59.2</td>
+                    <td class="at-section">75.0</td>
+                    <td class="at-section"><b>182.93</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">C.KARATAŞ</td>
+                    <td class="antrenor-section">47.48</td>
+                    <td class="antrenor-section">41.8</td>
+                    <td class="antrenor-section">49.54</td>
+                    <td class="antrenor-section"><b>138.82</b></td>
+                    <td class="genel-toplam">321.75</td>
+                    <td class="reyting-section">1593</td>
+                    <td class="kombinasyon">401.4</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">11</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">SON İZCİ</td>
+                    <td>10</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">A.YILDIZ</td>
+                    <td class="at-section">61.68</td>
+                    <td class="at-section">45.02</td>
+                    <td class="at-section">57.14</td>
+                    <td class="at-section"><b>163.84</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">O.DEMİR</td>
+                    <td class="antrenor-section">44.12</td>
+                    <td class="antrenor-section">50.89</td>
+                    <td class="antrenor-section">46.18</td>
+                    <td class="antrenor-section"><b>141.19</b></td>
+                    <td class="genel-toplam">305.03</td>
+                    <td class="reyting-section">1658</td>
+                    <td class="kombinasyon">387.93</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">12</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 TİRİLYE KARTALI</td>
+                    <td>12</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">Ö.YILDIRIM</td>
+                    <td class="at-section">50.51</td>
+                    <td class="at-section">30.56</td>
+                    <td class="at-section">77.78</td>
+                    <td class="at-section"><b>158.85</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">HAS.ALTUNBAŞ</td>
+                    <td class="antrenor-section">45.77</td>
+                    <td class="antrenor-section">40.61</td>
+                    <td class="antrenor-section">33.61</td>
+                    <td class="antrenor-section"><b>119.99</b></td>
+                    <td class="genel-toplam">278.84</td>
+                    <td class="reyting-section">1602</td>
+                    <td class="kombinasyon">358.94</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">13</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">DOĞUYURT</td>
+                    <td>4</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">A.SÖZEN</td>
+                    <td class="at-section">53.23</td>
+                    <td class="at-section">37.96</td>
+                    <td class="at-section">11.11</td>
+                    <td class="at-section"><b>102.3</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">H.YÜZBAŞI</td>
+                    <td class="antrenor-section">51.86</td>
+                    <td class="antrenor-section">51.67</td>
+                    <td class="antrenor-section">61.98</td>
+                    <td class="antrenor-section"><b>165.51</b></td>
+                    <td class="genel-toplam">267.81</td>
+                    <td class="reyting-section">1616</td>
+                    <td class="kombinasyon">348.61</td>
+                </tr>
+            
+            </tbody>
+        </table>
+        </div>
+        
+        <div class="durbun-section">
+            <h3>🔍 DÜRBÜNE TAKILANLAR</h3>
+            <table class="durbun-table">
+                <thead>
+                    <tr>
+                        <th>K</th>
+                        <th>POZ</th>
+                        <th>AT ADI</th>
+                        <th>YAŞ</th>
+                        <th>MESAFE</th>
+                        <th>ZAMAN</th>
+                        <th>BİR.ZAMAN</th>
+                        <th>FARK</th>
+                        <th>GANYAN</th>
+                        <th>JOKEY</th>
+                        <th>KAZANDI</th>
+                        <th>DİK.MESAFE</th>
+                    </tr>
+                </thead>
+                <tbody>
+        
+                <tr>
+                    <td>219368</td>
+                    <td>4</td>
+                    <td style="font-weight:bold;">🔴BAY MIRIK</td>
+                    <td>-</td>
+                    <td>1400m</td>
+                    <td>1.31.48</td>
+                    <td>1.30.88</td>
+                    <td style="font-weight:bold; color:#000;">0.600</td>
+                    <td>7.05</td>
+                    <td>M.KAYA</td>
+                    <td>✓ 03/08-1600m</td>
+                    <td>1300-1700</td>
+                </tr>
+            
+                <tr>
+                    <td>218908</td>
+                    <td>3</td>
+                    <td style="font-weight:bold;">🔴DADAŞ ACAR</td>
+                    <td>-</td>
+                    <td>1200m</td>
+                    <td>1.24.38</td>
+                    <td>1.23.90</td>
+                    <td style="font-weight:bold; color:#000;">0.480</td>
+                    <td>17.10</td>
+                    <td>A.ÇELİK</td>
+                    <td>✓ 11/05-1100m</td>
+                    <td>1300-1700</td>
+                </tr>
+            
+                <tr>
+                    <td>218612</td>
+                    <td>6</td>
+                    <td style="font-weight:bold;">🔴FERMAN YAZAR</td>
+                    <td>-</td>
+                    <td>1200m</td>
+                    <td>1.22.73</td>
+                    <td>1.22.08</td>
+                    <td style="font-weight:bold; color:#000;">0.650</td>
+                    <td>8.65</td>
+                    <td>İ.S.SÖĞÜTAPApranti</td>
+                    <td>✓ 04/09-1400m</td>
+                    <td>1300-1700</td>
+                </tr>
+            
+                <tr>
+                    <td>219383</td>
+                    <td>2</td>
+                    <td style="font-weight:bold;">🔴GÖKIRMAK</td>
+                    <td>-</td>
+                    <td>1400m</td>
+                    <td>1.36.66</td>
+                    <td>1.36.65</td>
+                    <td style="font-weight:bold; color:#000;">0.010</td>
+                    <td>18.50</td>
+                    <td>M.S.ÇELİK</td>
+                    <td>✓ 17/04-1100m</td>
+                    <td>1300-1700</td>
+                </tr>
+            
+                <tr>
+                    <td>219368</td>
+                    <td>3</td>
+                    <td style="font-weight:bold;">🔴KAYIPSIZ</td>
+                    <td>-</td>
+                    <td>1400m</td>
+                    <td>1.31.37</td>
+                    <td>1.30.88</td>
+                    <td style="font-weight:bold; color:#000;">0.490</td>
+                    <td>9.10</td>
+                    <td>G.KOCAKAYA</td>
+                    <td>✓ 04/09-1400m</td>
+                    <td>1300-1700</td>
+                </tr>
+            
+                <tr>
+                    <td>219013</td>
+                    <td>3</td>
+                    <td style="font-weight:bold;">🔴ÖZMEN BEY</td>
+                    <td>-</td>
+                    <td>1600m</td>
+                    <td>1.46.86</td>
+                    <td>1.46.79</td>
+                    <td style="font-weight:bold; color:#000;">0.070</td>
+                    <td>14.00</td>
+                    <td>S.KAYA</td>
+                    <td>✓ 20/08-1400m</td>
+                    <td>1300-1700</td>
+                </tr>
+            
+                <tr>
+                    <td>219665</td>
+                    <td>2</td>
+                    <td style="font-weight:bold;">🔴TİRİLYE KARTALI</td>
+                    <td>-</td>
+                    <td>1400m</td>
+                    <td>1.33.14</td>
+                    <td>1.32.68</td>
+                    <td style="font-weight:bold; color:#000;">0.460</td>
+                    <td>8.55</td>
+                    <td>Ö.YILDIRIM</td>
+                    <td>✓ 28/05-1200m</td>
+                    <td>1300-1700</td>
+                </tr>
+            
+                <tr>
+                    <td>219686</td>
+                    <td>2</td>
+                    <td style="font-weight:bold;">🔴YELBOZAN</td>
+                    <td>-</td>
+                    <td>1400m</td>
+                    <td>1.32.87</td>
+                    <td>1.32.16</td>
+                    <td style="font-weight:bold; color:#000;">0.710</td>
+                    <td>18.95</td>
+                    <td>H.ÇİZİK</td>
+                    <td>✓ 12/08-1200m</td>
+                    <td>1300-1700</td>
+                </tr>
+            
+                </tbody>
+            </table>
+        </div>
+        </div>
+                <div class="race-container">
+                    <h2>🏁 7. Koşu - 2100m Sentetik</h2>
+                    <div class="race-info">
+                        <p><strong>TJK Koşu No:</strong> 219978</p>
+                        <p><strong>Koşu Şartları:</strong> KV-7/DHÖW/Dişi , 4 ve Yukarı Araplar,<br><br>57.50 kg, 60 kg, <br>                    2100<br><br>Sentetik , E.İ.D. : 2.22.22</p>
+                    </div>
+                
+        <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">Sıra</th>
+                    <th rowspan="2">At</th>
+                    <th rowspan="2">No</th>
+                    <th rowspan="2">Kg</th>
+                    <th rowspan="2">Jokey</th>
+                    <th colspan="4" class="at-section">At Performansı</th>
+                    <th colspan="5" class="antrenor-section">Antrenör</th>
+                    <th rowspan="2" class="genel-toplam">Genel<br>Toplam</th>
+                    <th rowspan="2" class="reyting-section">Reyting</th>
+                    <th rowspan="2" class="kombinasyon">Final<br>Puan</th>
+                </tr>
+                <tr>
+                    <th class="at-section">Son5</th>
+                    <th class="at-section">Son3</th>
+                    <th class="at-section">Son1</th>
+                    <th class="at-section">Top</th>
+                    <th class="antrenor-section">İsim</th>
+                    <th class="antrenor-section">S20</th>
+                    <th class="antrenor-section">S10</th>
+                    <th class="antrenor-section">S5</th>
+                    <th class="antrenor-section">Top</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+                <tr class="highlight">
+                    <td><span class="sira-no birinci">1</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">KÖÇEK <span class='ai-trophy'>🏆1</span></td>
+                    <td>1</td>
+                    <td>65.0</td>
+                    <td style="color:#000;">Ö.YILDIRIM</td>
+                    <td class="at-section">73.83</td>
+                    <td class="at-section">76.39</td>
+                    <td class="at-section">58.33</td>
+                    <td class="at-section"><b>208.55</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">T.DURAN</td>
+                    <td class="antrenor-section">55.29</td>
+                    <td class="antrenor-section">58.3</td>
+                    <td class="antrenor-section">56.81</td>
+                    <td class="antrenor-section"><b>170.39</b></td>
+                    <td class="genel-toplam">378.94</td>
+                    <td class="reyting-section">1719</td>
+                    <td class="kombinasyon">464.89</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ikinci">2</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 İWOJİMA</td>
+                    <td>4</td>
+                    <td>60.0</td>
+                    <td style="color:#000;">V.ABİŞ</td>
+                    <td class="at-section">52.08</td>
+                    <td class="at-section">41.67</td>
+                    <td class="at-section">75.0</td>
+                    <td class="at-section"><b>168.75</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">S.BEKTAŞ</td>
+                    <td class="antrenor-section">54.66</td>
+                    <td class="antrenor-section">58.86</td>
+                    <td class="antrenor-section">58.89</td>
+                    <td class="antrenor-section"><b>172.41</b></td>
+                    <td class="genel-toplam">341.16</td>
+                    <td class="reyting-section">1610</td>
+                    <td class="kombinasyon">421.66</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ucuncu">3</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 SAADGIRL <span class='ai-trophy'>🏆2</span></td>
+                    <td>6</td>
+                    <td>60.0</td>
+                    <td style="color:#000;">A.ÇELİK</td>
+                    <td class="at-section">64.4</td>
+                    <td class="at-section">68.45</td>
+                    <td class="at-section">71.43</td>
+                    <td class="at-section"><b>204.29</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">V.YÜKSEL</td>
+                    <td class="antrenor-section">46.39</td>
+                    <td class="antrenor-section">45.19</td>
+                    <td class="antrenor-section">40.88</td>
+                    <td class="antrenor-section"><b>132.46</b></td>
+                    <td class="genel-toplam">336.75</td>
+                    <td class="reyting-section">1672</td>
+                    <td class="kombinasyon">420.35</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">4</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 KILIÇASLI <span class='ai-trophy'>🏆4</span></td>
+                    <td>5</td>
+                    <td>60.0</td>
+                    <td style="color:#000;">E.ÇANKAYA</td>
+                    <td class="at-section">58.41</td>
+                    <td class="at-section">54.07</td>
+                    <td class="at-section">40.0</td>
+                    <td class="at-section"><b>152.49</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">A.KAPLAN</td>
+                    <td class="antrenor-section">62.04</td>
+                    <td class="antrenor-section">56.66</td>
+                    <td class="antrenor-section">59.78</td>
+                    <td class="antrenor-section"><b>178.48</b></td>
+                    <td class="genel-toplam">330.96</td>
+                    <td class="reyting-section">1642</td>
+                    <td class="kombinasyon">413.06</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">5</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">NERGİZLİ</td>
+                    <td>7</td>
+                    <td>57.5</td>
+                    <td style="color:#000;">MÜS.ÇELİK</td>
+                    <td class="at-section">46.79</td>
+                    <td class="at-section">58.53</td>
+                    <td class="at-section">66.67</td>
+                    <td class="at-section"><b>171.99</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">T.KURT</td>
+                    <td class="antrenor-section">47.49</td>
+                    <td class="antrenor-section">43.88</td>
+                    <td class="antrenor-section">42.95</td>
+                    <td class="antrenor-section"><b>134.32</b></td>
+                    <td class="genel-toplam">306.31</td>
+                    <td class="reyting-section">1583</td>
+                    <td class="kombinasyon">385.46</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">6</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 COLEGA</td>
+                    <td>2</td>
+                    <td>61.0</td>
+                    <td style="color:#000;">M.M.BİLGİN</td>
+                    <td class="at-section">41.81</td>
+                    <td class="at-section">46.35</td>
+                    <td class="at-section">42.86</td>
+                    <td class="at-section"><b>131.02</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">M.KAYA</td>
+                    <td class="antrenor-section">47.84</td>
+                    <td class="antrenor-section">54.36</td>
+                    <td class="antrenor-section">64.56</td>
+                    <td class="antrenor-section"><b>166.76</b></td>
+                    <td class="genel-toplam">297.78</td>
+                    <td class="reyting-section">1559</td>
+                    <td class="kombinasyon">375.73</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">7</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 FIRATIN GÜCÜ <span class='ai-trophy'>🏆3</span></td>
+                    <td>10</td>
+                    <td>55.5</td>
+                    <td style="color:#000;">M.KAYA</td>
+                    <td class="at-section">53.64</td>
+                    <td class="at-section">44.17</td>
+                    <td class="at-section">60.0</td>
+                    <td class="at-section"><b>157.81</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">S.DURGUÇ</td>
+                    <td class="antrenor-section">50.04</td>
+                    <td class="antrenor-section">44.22</td>
+                    <td class="antrenor-section">37.93</td>
+                    <td class="antrenor-section"><b>132.19</b></td>
+                    <td class="genel-toplam">290.0</td>
+                    <td class="reyting-section">1618</td>
+                    <td class="kombinasyon">370.9</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">8</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">HEREKLİ</td>
+                    <td>3</td>
+                    <td>60.0</td>
+                    <td style="color:#000;">A.KURŞUN
+
+
+AYHAN KURŞUN     raporlu olduğundan yarışta at binemeyecektir.</td>
+                    <td class="at-section">45.04</td>
+                    <td class="at-section">56.35</td>
+                    <td class="at-section">50.0</td>
+                    <td class="at-section"><b>151.38</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">C.B.SERİNER</td>
+                    <td class="antrenor-section">44.18</td>
+                    <td class="antrenor-section">38.96</td>
+                    <td class="antrenor-section">40.96</td>
+                    <td class="antrenor-section"><b>124.1</b></td>
+                    <td class="genel-toplam">275.48</td>
+                    <td class="reyting-section">1575</td>
+                    <td class="kombinasyon">354.23</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">9</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">EPARVEN</td>
+                    <td>9</td>
+                    <td>56.0</td>
+                    <td style="color:#000;">SAL.ÇELİK</td>
+                    <td class="at-section">27.14</td>
+                    <td class="at-section">27.14</td>
+                    <td class="at-section">14.29</td>
+                    <td class="at-section"><b>68.58</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">H.ÇELİK</td>
+                    <td class="antrenor-section">57.67</td>
+                    <td class="antrenor-section">61.44</td>
+                    <td class="antrenor-section">61.16</td>
+                    <td class="antrenor-section"><b>180.28</b></td>
+                    <td class="genel-toplam">248.86</td>
+                    <td class="reyting-section">1485</td>
+                    <td class="kombinasyon">323.11</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">10</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 LUSİA</td>
+                    <td>8</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">A.SÖZEN</td>
+                    <td class="at-section">32.14</td>
+                    <td class="at-section">38.1</td>
+                    <td class="at-section">14.29</td>
+                    <td class="at-section"><b>84.53</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">E.USLU</td>
+                    <td class="antrenor-section">40.0</td>
+                    <td class="antrenor-section">35.89</td>
+                    <td class="antrenor-section">19.05</td>
+                    <td class="antrenor-section"><b>94.94</b></td>
+                    <td class="genel-toplam">179.47</td>
+                    <td class="reyting-section">1510</td>
+                    <td class="kombinasyon">254.97</td>
+                </tr>
+            
+            </tbody>
+        </table>
+        </div>
+        
+        <div class="durbun-section">
+            <h3>🔍 DÜRBÜNE TAKILANLAR</h3>
+            <table class="durbun-table">
+                <thead>
+                    <tr>
+                        <th>K</th>
+                        <th>POZ</th>
+                        <th>AT ADI</th>
+                        <th>YAŞ</th>
+                        <th>MESAFE</th>
+                        <th>ZAMAN</th>
+                        <th>BİR.ZAMAN</th>
+                        <th>FARK</th>
+                        <th>GANYAN</th>
+                        <th>JOKEY</th>
+                        <th>KAZANDI</th>
+                        <th>DİK.MESAFE</th>
+                    </tr>
+                </thead>
+                <tbody>
+        
+                <tr>
+                    <td>218826</td>
+                    <td>4</td>
+                    <td style="font-weight:bold;">🔴COLEGA</td>
+                    <td>-</td>
+                    <td>1400m</td>
+                    <td>1.32.47</td>
+                    <td>1.31.94</td>
+                    <td style="font-weight:bold; color:#000;">0.530</td>
+                    <td>9.10</td>
+                    <td>H.KARATAŞ</td>
+                    <td>✓ 02/01-2200m</td>
+                    <td>1900-2300</td>
+                </tr>
+            
+                <tr>
+                    <td>219185</td>
+                    <td>2</td>
+                    <td style="font-weight:bold;">🔴İWOJİMA</td>
+                    <td>-</td>
+                    <td>1900m</td>
+                    <td>2.17.87</td>
+                    <td>2.17.86</td>
+                    <td style="font-weight:bold; color:#000;">0.010</td>
+                    <td>6.00</td>
+                    <td>N.AVCİ</td>
+                    <td>✓ 02/05-2000m</td>
+                    <td>1900-2300</td>
+                </tr>
+            
+                <tr>
+                    <td>218646</td>
+                    <td>6</td>
+                    <td style="font-weight:bold;">🔴KILIÇASLI</td>
+                    <td>-</td>
+                    <td>1400m</td>
+                    <td>1.34.93</td>
+                    <td>1.33.94</td>
+                    <td style="font-weight:bold; color:#000;">0.990</td>
+                    <td>10.15</td>
+                    <td>MÜS.ÇELİK</td>
+                    <td>✓ 22/06-2000m</td>
+                    <td>1900-2300</td>
+                </tr>
+            
+                <tr>
+                    <td>218645</td>
+                    <td>2</td>
+                    <td style="font-weight:bold;">🔴SAADGIRL</td>
+                    <td>-</td>
+                    <td>1600m</td>
+                    <td>1.48.30</td>
+                    <td>1.48.29</td>
+                    <td style="font-weight:bold; color:#000;">0.010</td>
+                    <td>8.85</td>
+                    <td>M.A.AKGÖBEKAPApranti</td>
+                    <td>✓ 01/06-1900m</td>
+                    <td>1900-2300</td>
+                </tr>
+            
+                <tr>
+                    <td>218967</td>
+                    <td>4</td>
+                    <td style="font-weight:bold;">🔴LUSİA</td>
+                    <td>-</td>
+                    <td>1300m</td>
+                    <td>1.24.92</td>
+                    <td>1.24.86</td>
+                    <td style="font-weight:bold; color:#000;">0.060</td>
+                    <td>23.30</td>
+                    <td>E.ÇANKAYA</td>
+                    <td>✓ 15/02-1500m</td>
+                    <td>1900-2300</td>
+                </tr>
+            
+                <tr>
+                    <td>218824</td>
+                    <td>3</td>
+                    <td style="font-weight:bold;">🔴FIRATIN GÜCÜ</td>
+                    <td>-</td>
+                    <td>1500m</td>
+                    <td>1.42.19</td>
+                    <td>1.41.82</td>
+                    <td style="font-weight:bold; color:#000;">0.370</td>
+                    <td>5.10</td>
+                    <td>Ö.YILDIRIM</td>
+                    <td>✓ 06/06-1400m</td>
+                    <td>1900-2300</td>
+                </tr>
+            
+                </tbody>
+            </table>
+        </div>
+        </div>
+                <div class="race-container">
+                    <h2>🏁 8. Koşu - 1400m Sentetik</h2>
+                    <div class="race-info">
+                        <p><strong>TJK Koşu No:</strong> 219966</p>
+                        <p><strong>Koşu Şartları:</strong> KV-8 , 2 Yaşlı İngilizler,<br><br>57 kg, <br>                    1400<br><br>Sentetik , E.İ.D. : 1.22.22</p>
+                    </div>
+                
+        <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">Sıra</th>
+                    <th rowspan="2">At</th>
+                    <th rowspan="2">No</th>
+                    <th rowspan="2">Kg</th>
+                    <th rowspan="2">Jokey</th>
+                    <th colspan="4" class="at-section">At Performansı</th>
+                    <th colspan="5" class="antrenor-section">Antrenör</th>
+                    <th rowspan="2" class="genel-toplam">Genel<br>Toplam</th>
+                    <th rowspan="2" class="reyting-section">Reyting</th>
+                    <th rowspan="2" class="kombinasyon">Final<br>Puan</th>
+                </tr>
+                <tr>
+                    <th class="at-section">Son5</th>
+                    <th class="at-section">Son3</th>
+                    <th class="at-section">Son1</th>
+                    <th class="at-section">Top</th>
+                    <th class="antrenor-section">İsim</th>
+                    <th class="antrenor-section">S20</th>
+                    <th class="antrenor-section">S10</th>
+                    <th class="antrenor-section">S5</th>
+                    <th class="antrenor-section">Top</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+                <tr class="highlight">
+                    <td><span class="sira-no birinci">1</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">KNOW WORTH <span class='ai-trophy'>🏆1</span></td>
+                    <td>2</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">A.SÖZEN</td>
+                    <td class="at-section">83.33</td>
+                    <td class="at-section">83.33</td>
+                    <td class="at-section">83.33</td>
+                    <td class="at-section"><b>249.99</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">D.DEMİRKAPU</td>
+                    <td class="antrenor-section">50.58</td>
+                    <td class="antrenor-section">49.2</td>
+                    <td class="antrenor-section">36.09</td>
+                    <td class="antrenor-section"><b>135.88</b></td>
+                    <td class="genel-toplam">385.87</td>
+                    <td class="reyting-section">1766</td>
+                    <td class="kombinasyon">474.17</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ikinci">2</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 SUPER TOMO <span class='ai-trophy'>🏆4</span></td>
+                    <td>1</td>
+                    <td>58.0</td>
+                    <td style="color:#000;">V.ABİŞ</td>
+                    <td class="at-section">68.48</td>
+                    <td class="at-section">67.5</td>
+                    <td class="at-section">50.0</td>
+                    <td class="at-section"><b>185.98</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">C.KATI</td>
+                    <td class="antrenor-section">58.2</td>
+                    <td class="antrenor-section">58.98</td>
+                    <td class="antrenor-section">61.4</td>
+                    <td class="antrenor-section"><b>178.57</b></td>
+                    <td class="genel-toplam">364.56</td>
+                    <td class="reyting-section">1692</td>
+                    <td class="kombinasyon">449.16</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ucuncu">3</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">STATUE OF LIBERTY <span class='ai-trophy'>🏆2</span></td>
+                    <td>5</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">H.KARATAŞ</td>
+                    <td class="at-section">75.55</td>
+                    <td class="at-section">75.55</td>
+                    <td class="at-section">83.33</td>
+                    <td class="at-section"><b>234.44</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">MET.ACAR</td>
+                    <td class="antrenor-section">46.5</td>
+                    <td class="antrenor-section">38.37</td>
+                    <td class="antrenor-section">30.97</td>
+                    <td class="antrenor-section"><b>115.83</b></td>
+                    <td class="genel-toplam">350.27</td>
+                    <td class="reyting-section">1727</td>
+                    <td class="kombinasyon">436.62</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">4</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 PANCHO</td>
+                    <td>4</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">E.ÇANKAYA</td>
+                    <td class="at-section">54.17</td>
+                    <td class="at-section">55.56</td>
+                    <td class="at-section">66.67</td>
+                    <td class="at-section"><b>176.39</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">C.KATI</td>
+                    <td class="antrenor-section">58.2</td>
+                    <td class="antrenor-section">58.98</td>
+                    <td class="antrenor-section">61.4</td>
+                    <td class="antrenor-section"><b>178.57</b></td>
+                    <td class="genel-toplam">354.97</td>
+                    <td class="reyting-section">1620</td>
+                    <td class="kombinasyon">435.97</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">5</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">🔴 HOLD FAST</td>
+                    <td>6</td>
+                    <td>55.0</td>
+                    <td style="color:#000;">A.KURŞUN
+
+
+AYHAN KURŞUN     raporlu olduğundan yarışta at binemeyecektir.</td>
+                    <td class="at-section">55.0</td>
+                    <td class="at-section">44.44</td>
+                    <td class="at-section">33.33</td>
+                    <td class="at-section"><b>132.77</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">H.YÜZBAŞI</td>
+                    <td class="antrenor-section">51.86</td>
+                    <td class="antrenor-section">51.67</td>
+                    <td class="antrenor-section">61.98</td>
+                    <td class="antrenor-section"><b>165.51</b></td>
+                    <td class="genel-toplam">298.29</td>
+                    <td class="reyting-section">1625</td>
+                    <td class="kombinasyon">379.54</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">6</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">KOÇAKTAY <span class='ai-trophy'>🏆3</span></td>
+                    <td>3</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">M.KAYA</td>
+                    <td class="at-section">60.91</td>
+                    <td class="at-section">60.91</td>
+                    <td class="at-section">20.0</td>
+                    <td class="at-section"><b>141.82</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">Y.DEMİRKIRAN</td>
+                    <td class="antrenor-section">52.09</td>
+                    <td class="antrenor-section">48.33</td>
+                    <td class="antrenor-section">51.44</td>
+                    <td class="antrenor-section"><b>151.87</b></td>
+                    <td class="genel-toplam">293.69</td>
+                    <td class="reyting-section">1654</td>
+                    <td class="kombinasyon">376.39</td>
+                </tr>
+            
+            </tbody>
+        </table>
+        </div>
+        
+        <div class="durbun-section">
+            <h3>🔍 DÜRBÜNE TAKILANLAR</h3>
+            <table class="durbun-table">
+                <thead>
+                    <tr>
+                        <th>K</th>
+                        <th>POZ</th>
+                        <th>AT ADI</th>
+                        <th>YAŞ</th>
+                        <th>MESAFE</th>
+                        <th>ZAMAN</th>
+                        <th>BİR.ZAMAN</th>
+                        <th>FARK</th>
+                        <th>GANYAN</th>
+                        <th>JOKEY</th>
+                        <th>KAZANDI</th>
+                        <th>DİK.MESAFE</th>
+                    </tr>
+                </thead>
+                <tbody>
+        
+                <tr>
+                    <td>219281</td>
+                    <td>4</td>
+                    <td style="font-weight:bold;">🔴SUPER TOMO</td>
+                    <td>-</td>
+                    <td>1300m</td>
+                    <td>1.17.92</td>
+                    <td>1.17.47</td>
+                    <td style="font-weight:bold; color:#000;">0.450</td>
+                    <td>10.05</td>
+                    <td>H.KARATAŞ</td>
+                    <td>✓ 20/07-1200m</td>
+                    <td>1200-1600</td>
+                </tr>
+            
+                <tr>
+                    <td>219500</td>
+                    <td>2</td>
+                    <td style="font-weight:bold;">🔴PANCHO</td>
+                    <td>-</td>
+                    <td>1300m</td>
+                    <td>1.19.08</td>
+                    <td>1.18.99</td>
+                    <td style="font-weight:bold; color:#000;">0.090</td>
+                    <td>8.40</td>
+                    <td>M.S.ÇELİK</td>
+                    <td>✓ 10/08-1200m</td>
+                    <td>1200-1600</td>
+                </tr>
+            
+                <tr>
+                    <td>218695</td>
+                    <td>3</td>
+                    <td style="font-weight:bold;">🔴HOLD FAST</td>
+                    <td>-</td>
+                    <td>1200m</td>
+                    <td>1.11.85</td>
+                    <td>1.11.55</td>
+                    <td style="font-weight:bold; color:#000;">0.300</td>
+                    <td>11.70</td>
+                    <td>A.SÖZEN</td>
+                    <td>✓ 06/06-1100m</td>
+                    <td>1200-1600</td>
+                </tr>
+            
+                </tbody>
+            </table>
+        </div>
+        </div>
+                <div class="race-container">
+                    <h2>🏁 9. Koşu - 1200m Çim</h2>
+                    <div class="race-info">
+                        <p><strong>TJK Koşu No:</strong> 219965</p>
+                        <p><strong>Koşu Şartları:</strong> ŞARTLI 1/DHÖW/Dişi , 3 Yaşlı Araplar,<br><br>57 kg, <br>                    1200<br><br>Çim , E.İ.D. : 1.16.50</p>
+                    </div>
+                
+        <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">Sıra</th>
+                    <th rowspan="2">At</th>
+                    <th rowspan="2">No</th>
+                    <th rowspan="2">Kg</th>
+                    <th rowspan="2">Jokey</th>
+                    <th colspan="4" class="at-section">At Performansı</th>
+                    <th colspan="5" class="antrenor-section">Antrenör</th>
+                    <th rowspan="2" class="genel-toplam">Genel<br>Toplam</th>
+                    <th rowspan="2" class="reyting-section">Reyting</th>
+                    <th rowspan="2" class="kombinasyon">Final<br>Puan</th>
+                </tr>
+                <tr>
+                    <th class="at-section">Son5</th>
+                    <th class="at-section">Son3</th>
+                    <th class="at-section">Son1</th>
+                    <th class="at-section">Top</th>
+                    <th class="antrenor-section">İsim</th>
+                    <th class="antrenor-section">S20</th>
+                    <th class="antrenor-section">S10</th>
+                    <th class="antrenor-section">S5</th>
+                    <th class="antrenor-section">Top</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+                <tr class="highlight">
+                    <td><span class="sira-no birinci">1</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">AL YÜREK</td>
+                    <td>1</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">M.M.BİLGİN</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">Y.ÖZTAŞ</td>
+                    <td class="antrenor-section">63.79</td>
+                    <td class="antrenor-section">66.72</td>
+                    <td class="antrenor-section">68.14</td>
+                    <td class="antrenor-section"><b>198.66</b></td>
+                    <td class="genel-toplam">198.66</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">278.66</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ikinci">2</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">YARSELİ</td>
+                    <td>13</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">E.AKTUĞ</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">AT.GÖKÇE</td>
+                    <td class="antrenor-section">62.03</td>
+                    <td class="antrenor-section">62.45</td>
+                    <td class="antrenor-section">57.58</td>
+                    <td class="antrenor-section"><b>182.07</b></td>
+                    <td class="genel-toplam">182.07</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">262.07</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ucuncu">3</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">DEVRAN HAT</td>
+                    <td>6</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">S.ÖZEN</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">F.DEMİR</td>
+                    <td class="antrenor-section">42.41</td>
+                    <td class="antrenor-section">53.01</td>
+                    <td class="antrenor-section">66.01</td>
+                    <td class="antrenor-section"><b>161.43</b></td>
+                    <td class="genel-toplam">161.43</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">241.43</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">4</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">UNRAVEL</td>
+                    <td>12</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">G.ÖZÇELİK</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">M.ÖCAL</td>
+                    <td class="antrenor-section">48.05</td>
+                    <td class="antrenor-section">52.47</td>
+                    <td class="antrenor-section">54.76</td>
+                    <td class="antrenor-section"><b>155.28</b></td>
+                    <td class="genel-toplam">155.28</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">235.28</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">5</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">GÜLLÜ TAY</td>
+                    <td>7</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">MÜS.ÇELİK</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">Y.DEMİRKIRAN</td>
+                    <td class="antrenor-section">52.09</td>
+                    <td class="antrenor-section">48.33</td>
+                    <td class="antrenor-section">51.44</td>
+                    <td class="antrenor-section"><b>151.87</b></td>
+                    <td class="genel-toplam">151.87</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">231.87</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">6</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">KOŞBAŞAR</td>
+                    <td>9</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">E.ÇANKAYA</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">ENG.ALTIN</td>
+                    <td class="antrenor-section">49.87</td>
+                    <td class="antrenor-section">44.97</td>
+                    <td class="antrenor-section">55.96</td>
+                    <td class="antrenor-section"><b>150.8</b></td>
+                    <td class="genel-toplam">150.8</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">230.8</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">7</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">SİYAH KUŞ</td>
+                    <td>10</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">A.YILDIZ</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">A.AKBULUT</td>
+                    <td class="antrenor-section">46.59</td>
+                    <td class="antrenor-section">44.13</td>
+                    <td class="antrenor-section">54.44</td>
+                    <td class="antrenor-section"><b>145.17</b></td>
+                    <td class="genel-toplam">145.17</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">225.17</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">8</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">BUSE</td>
+                    <td>3</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">A.SÖZEN</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">HAY.YILDIRIM</td>
+                    <td class="antrenor-section">40.91</td>
+                    <td class="antrenor-section">44.95</td>
+                    <td class="antrenor-section">55.24</td>
+                    <td class="antrenor-section"><b>141.1</b></td>
+                    <td class="genel-toplam">141.1</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">221.1</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">9</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">CİLVELOY</td>
+                    <td>4</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">Z.KARABULUT</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">B.ŞANDAN</td>
+                    <td class="antrenor-section">49.29</td>
+                    <td class="antrenor-section">40.48</td>
+                    <td class="antrenor-section">43.93</td>
+                    <td class="antrenor-section"><b>133.7</b></td>
+                    <td class="genel-toplam">133.7</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">213.7</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">10</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">AY FERİDE</td>
+                    <td>2</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">H.ÇİZİK</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">B.TANRIKULU</td>
+                    <td class="antrenor-section">46.01</td>
+                    <td class="antrenor-section">39.37</td>
+                    <td class="antrenor-section">37.92</td>
+                    <td class="antrenor-section"><b>123.29</b></td>
+                    <td class="genel-toplam">123.29</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">203.29</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">11</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">HAYLAZKIZ</td>
+                    <td>8</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">A.KAÇMAZ</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">S.ÇİFTÇİ</td>
+                    <td class="antrenor-section">40.01</td>
+                    <td class="antrenor-section">44.05</td>
+                    <td class="antrenor-section">37.3</td>
+                    <td class="antrenor-section"><b>121.36</b></td>
+                    <td class="genel-toplam">121.36</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">201.36</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">12</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">THORADA</td>
+                    <td>11</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">E.BOZDAĞ</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">S.ÇİFTÇİ</td>
+                    <td class="antrenor-section">40.01</td>
+                    <td class="antrenor-section">44.05</td>
+                    <td class="antrenor-section">37.3</td>
+                    <td class="antrenor-section"><b>121.36</b></td>
+                    <td class="genel-toplam">121.36</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">201.36</td>
+                </tr>
+            
+                <tr class="">
+                    <td><span class="sira-no ">13</span></td>
+                    <td style="text-align:left; font-weight:bold; color:#000;">ÇİÇEK TOHUMU</td>
+                    <td>5</td>
+                    <td>57.0</td>
+                    <td style="color:#000;">A.ÇELİK</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section">0</td>
+                    <td class="at-section"><b>0</b></td>
+                    <td class="antrenor-section" style="text-align:left; color:#000;">M.ALTIN</td>
+                    <td class="antrenor-section">38.66</td>
+                    <td class="antrenor-section">38.3</td>
+                    <td class="antrenor-section">29.9</td>
+                    <td class="antrenor-section"><b>106.86</b></td>
+                    <td class="genel-toplam">106.86</td>
+                    <td class="reyting-section">1600</td>
+                    <td class="kombinasyon">186.86</td>
+                </tr>
+            
+            </tbody>
+        </table>
+        </div>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 30px;">
+        <p class="footer-text">📅 Oluşturulma Tarihi: 17.09.2025 13:53</p>
+        <p class="footer-text">🏆 AI: SADECE Son5'in ilk 4 değeri (x3.0, x2.5, x2.0, x1.5)</p>
+        <p class="footer-text">⚠️ Son3 ve Son1 hesaba KATILMAZ!</p>
+        <p class="footer-text">🎯 Sadece en iyi 4 performansa odaklanır!</p>
+        <p class="footer-text">🔴 Kırmızı işaretli atlar son 60 günde dürbüne takılmıştır</p>
+        <p class="footer-text">© 2024 At Yarışı Analiz Sistemi - AI Tahmin Sistemi</p>
+    </div>
+</body>
+</html>
